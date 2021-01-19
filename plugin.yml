@@ -1,0 +1,17 @@
+name: Business
+main: Boss90.RegionSheller.GLClass
+description: Simple plugin
+version: 0.1
+commands:
+  shopGUI:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  sbalance:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  stakebalance:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  shelp:
+    description: Shows info is Player.
+    usage: /news [TEXT]

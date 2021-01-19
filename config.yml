@@ -1,0 +1,77 @@
+#Plugin: BusinessSign, By: Boss90.
+Balance:
+  money: 0
+GUI:
+  NameGUI: '&aShop'
+  NameApple: '&cApple'
+  LoreApple: '&cApple&f: 150 money, 15 number'
+  NameBread: '&6Bread'
+  LoreBread: '&6Bread&f: 40 money'
+  NamePotato: '&aPotato'
+  LorePotato: '&aPotato: &f90 money, 5 number'
+  NameMilk: '&fMilk'
+  LoreMilk: '&fMilk: 50 money'
+  NameFishing: '&3Fishing Rod'
+  LoreFishing: '&3Fishing Rod&f: 500 money'
+  NameBook: '&cWritable Book'
+  LoreBook: '&cWritable Book&f: 100 money'
+  NameClock: '&eClock'
+  LoreClock: '&eClock&f: 150 money'
+  NameCompass: '&7Compass'
+  LoreCompass: '&7Compass&f: 100 money'
+  NameSteel: '&4Flint and Steel'
+  LoreSteel: '&4Flint and Steel&f: 200 money'
+Messages:
+  BuyAppleMessage: '&aYou bought apples for 150 money'
+  BuyBreadMessage: '&aYou bought bread for 40 money'
+  BuyPotatoMessage: '&aYou bought potato for 90 money'
+  BuyMilkMessage: '&aYou bought milk for 50 money'
+  BuyFishingMessage: '&aYou bought Fishing rod for 500 money'
+  BuyBookMessage: '&aYou bought Book for 100 money'
+  BuyClockMessage: '&aYou bought Clock for 150 money'
+  BuyCompassMessage: '&aYou bought Compass for 100 money'
+  BuySteelMessage: '&aYou bought Flint and Sleet for 200 money'
+  InsufficientFundsBreadMessage: '&cYou dont have enough funds buy bread'
+  InsufficientFundsAppleMessage: '&cYou dont have enough funds buy apple'
+  InsufficientFundsPotatoMessage: '&cYou dont have enough funds buy potato'
+  InsufficientFundsMilkMessage: '&cYou dont have enough funds buy milk'
+  InsufficientFundsFishingMessage: '&cYou dont have enough funds buy fishing rod'
+  InsufficientFundsBookMessage: '&cYou dont have enough funds buy writable book'
+  InsufficientFundsClockMessage: '&cYou dont have enough funds buy clock'
+  InsufficientFundsCompassMessage: '&cYou dont have enough funds buy compass'
+  InsufficientFundsSteelMessage: '&cYou dont have enough funds buy Flint and Steel'
+  InsufficientBusinessSucessMessage: '&aYou have successfully withdrawn money from
+    the business:'
+  InsufficientBusinessFailedMessage: '&cThere are 0 coins on the business balance.'
+  InsufficientBusinessBalanceMessage: '&fBalance of your business:'
+Price:
+  ApplePrice: 150
+  BreadPrice: 40
+  PotatoPrice: 90
+  MilkPrice: 50
+  FishingPrice: 500
+  BookPrice: 100
+  ClockPrice: 150
+  CompassPrice: 100
+  SteelPrice: 200
+NumberGive:
+  NumberAppleGive: 15
+  NumberBreadGive: 1
+  NumberPotatoGive: 5
+  NumberMilkGive: 1
+  NumberFishingGive: 1
+  NumberBookGive: 1
+  NumberClockGive: 1
+  NumberCompassGive: 1
+  NumberSteelGive: 1
+Sign:
+  Prefix: '[BusinessSet]'
+  InvalidPrice: '&cInvalid price'
+  FirstLine: 'Business:'
+  TwoLine: 'Price:'
+  BusinessErrorBuy: The business is already bought!
+  InsufficientFundsMessage: '&cYou dont have enough funds buy Business'
+  MessageBusinessBuy: 'You have buy business:'
+  ThirdLine: 'bought:'
+  MessageTitleBusinessBuy: '&aYou have buy business!'
+  MessageTitleBusinessBuyTwoLine: '&aHappy you'
