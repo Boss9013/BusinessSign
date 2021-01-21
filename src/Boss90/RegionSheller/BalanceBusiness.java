@@ -20,7 +20,7 @@ this.plugin = plugin;
    	 {
 			String Money = plugin.getConfig().getString("Messages.InsufficientBusinessBalanceMessage");
 			Money = Money.replace("&", "\u00a7");
-   		 String s = plugin.getConfig().getString("Balance.money");
+   		 String s = plugin.getConfig().getString("Info.money");
    		 sender.sendMessage(Money + " " + s);
    		 return true;
    	 }

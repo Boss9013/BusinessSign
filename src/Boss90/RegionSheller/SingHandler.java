@@ -1,12 +1,8 @@
 package Boss90.RegionSheller;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
-import org.bukkit.boss.BarColor;
-import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,7 +10,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.managers.RegionManager;
@@ -132,18 +127,23 @@ public class SingHandler implements Listener {
 		
 		GLClass.getData().set(key, null);
 		GLClass.saveData();
-  		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pex user " + e.getPlayer().getName() + " add Business.balance");
-  		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "pex user " + e.getPlayer().getName() + " add Business.balanceTake");
   		System.out.println("Player " + e.getPlayer().getName() + " buy Business!");
 		p.sendMessage(SucessBusinessBuy + " " + region.getId());
 		Sign sign = (Sign) e.getClickedBlock().getState();
 		sign.setLine(2, ThreeLine + " " + p.getName());
 		sign.update();
+		this.plugin.getConfig().set("Info.owner", e.getPlayer().getName());
+		GLClass.getInsance().saveConfig();
 		String MessageTitle = plugin.getConfig().getString("Sign.MessageTitleBusinessBuy");
 		MessageTitle = MessageTitle.replace("&", "\u00a7");
 		String MessageTitleTwo = plugin.getConfig().getString("Sign.MessageTitleBusinessBuyTwoLine");
 		MessageTitleTwo = MessageTitleTwo.replace("&", "\u00a7");
         p.sendTitle(MessageTitle,MessageTitleTwo,20,90,20);
+		 PermissionUser user = PermissionsEx.getUser(p);
+		 user.addPermission("Business.balancetake");
+		 user.addPermission("Business.balance");
+		 user.addPermission("Business.Join");
+		 user.addPermission("Business.Quit");
 	}
 	
 	public String locToString(Location loc) {

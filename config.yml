@@ -1,6 +1,9 @@
-#Plugin: BusinessSign, By: Boss90.
-Balance:
+#Пожалуйста, проверьте все наши обновление.
+#spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/
+#check update, pls.
+Info:
   money: 0
+  owner: noOwner
 GUI:
   NameGUI: '&aShop'
   NameApple: '&cApple'
@@ -75,3 +78,11 @@ Sign:
   ThirdLine: 'bought:'
   MessageTitleBusinessBuy: '&aYou have buy business!'
   MessageTitleBusinessBuyTwoLine: '&aHappy you'
+JoinAndQuit:
+  MessageJoin: '&aBusinessMan %prefix% &f%player% %suffix% &fjoin server.'
+  Join: true
+  MessageQuit: '&aBusinessMan %prefix% &f%player% %suffix% &fleave server.'
+  Quit: true
+#Пожалуйста, проверьте все наши обновление.
+#spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/
+#check update, pls.

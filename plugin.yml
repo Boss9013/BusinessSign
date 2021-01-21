@@ -14,4 +14,10 @@ commands:
     usage: /news [TEXT]
   shelp:
     description: Shows info is Player.
+    usage: /news [TEXT]|
+  sremoveowner:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  swipebusiness:
+    description: Shows info is Player.
     usage: /news [TEXT]

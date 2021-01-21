@@ -7,6 +7,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+
 public class GLClass extends JavaPlugin implements Listener{
 	private static GLClass instance;
 		private File datafile;
@@ -36,18 +37,30 @@ public class GLClass extends JavaPlugin implements Listener{
 	getCommand("sbalance").setExecutor(new BalanceBusiness(this));
 	getCommand("stakebalance").setExecutor(new BalanceBusinessTake(this));
 	getCommand("shelp").setExecutor(new HelpToPlugin(this));
+	getCommand("sremoveowner").setExecutor(new removeOwner(this));
+	getCommand("swipebusiness").setExecutor(new wipebusiness(this));
 	Bukkit.getPluginManager().registerEvents(new SingHandler(this), this);
 	Bukkit.getPluginManager().registerEvents(new EconomyManager(), this);
 	Bukkit.getPluginManager().registerEvents(new ShopGUI(this), this);
 	Bukkit.getPluginManager().registerEvents(new BalanceBusiness(this), this);
 	Bukkit.getPluginManager().registerEvents(new BalanceBusinessTake(this), this);
 	Bukkit.getPluginManager().registerEvents(new HelpToPlugin(this), this);
-		}
-	
-	public static GLClass getInsance() {
-		return instance;
+	Bukkit.getPluginManager().registerEvents(new Join(this), this);
+	Bukkit.getPluginManager().registerEvents(new removeOwner(this), this);
+	Bukkit.getPluginManager().registerEvents(new wipebusiness(this), this);
+	if (Bukkit.getServer().getPluginManager().getPlugin("PermissionsEx") == null ) {
+		this.getLogger().info("[ERROR] First install the PermissionEx plugin");
 	}
-	
+	if (Bukkit.getServer().getPluginManager().getPlugin("WorldGuard") == null ) {
+			this.getLogger().info("[ERROR] First install the WorldGuard plugin");
+	}
+	if (Bukkit.getServer().getPluginManager().getPlugin("Vault") == null ) {
+				this.getLogger().info("[ERROR] First install the Vault plugin");
+	}
+		}
+		public static GLClass getInsance() {
+			return instance;
+		}
 	public static FileConfiguration getData() {
 		return instance.data;
 	}

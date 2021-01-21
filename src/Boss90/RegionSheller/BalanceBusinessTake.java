@@ -24,9 +24,9 @@ this.plugin = plugin;
 			
 			String Sucess = plugin.getConfig().getString("Messages.InsufficientBusinessSucessMessage");
 			Sucess = Sucess.replace("&", "\u00a7");
-		 int money = this.plugin.getConfig().getInt("Balance.money");
+		 int money = this.plugin.getConfig().getInt("Info.money");
 		 Player player = (Player) sender;
-		 this.plugin.getConfig().set("Balance.money", 0);
+		 this.plugin.getConfig().set("Info.money", 0);
 		 GLClass.getInsance().saveConfig();
 		 if(money == 0) {
 			 sender.sendMessage(Failed);
