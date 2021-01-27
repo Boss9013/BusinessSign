@@ -8,8 +8,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import net.md_5.bungee.api.ChatColor;
-import ru.tehkode.permissions.PermissionUser;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class Join implements Listener{
 	private GLClass plugin;
@@ -21,39 +19,35 @@ public class Join implements Listener{
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event) {
 		  Player player = (Player) event.getPlayer();
-	   		for(Player player1 : Bukkit.getOnlinePlayers()) {
-	   			if(!player.hasPermission("Business.Join")) continue;
-	   			PermissionUser user = PermissionsEx.getUser(player);
+	   		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName())) {
 	   			String JoinMessage = plugin.getConfig().getString("JoinAndQuit.MessageJoin");
 	   			JoinMessage = JoinMessage.replace("&", "\u00a7");
 	   			JoinMessage = JoinMessage.replace("%player%", event.getPlayer().getName());
-	   			JoinMessage = JoinMessage.replace("%suffix%", user.getSuffix());
-	   			JoinMessage = JoinMessage.replace("%prefix%", user.getPrefix());
+	   			JoinMessage = JoinMessage.replace("%suffix%", this.plugin.chat.getPlayerPrefix(player));
+	   			JoinMessage = JoinMessage.replace("%prefix%", this.plugin.chat.getPlayerPrefix(player));
 	   			if (!plugin.getConfig().getBoolean("JoinAndQuit.Join"))
 	   				return;
       Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',JoinMessage));
       return;
 	   		}
 	}
-    		@SuppressWarnings("unused")
 			@EventHandler
     		public void onPlayerQuitEvent(PlayerQuitEvent event) {
     			  Player player = (Player) event.getPlayer();
-    		   		for(Player player1 : Bukkit.getOnlinePlayers()) {
-    		   			if(!player.hasPermission("Business.Quit")) continue;
-    		   			PermissionUser user = PermissionsEx.getUser(player);
+    		   		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName())) {
     		   			String QuitMessage = plugin.getConfig().getString("JoinAndQuit.MessageQuit");
     		   			QuitMessage = QuitMessage.replace("&", "\u00a7");
     		   			QuitMessage = QuitMessage.replace("%player%", event.getPlayer().getName());
-    		   			QuitMessage = QuitMessage.replace("%suffix%", user.getSuffix());
-    		   			QuitMessage = QuitMessage.replace("%prefix%", user.getPrefix());
+    		   			QuitMessage = QuitMessage.replace("%suffix%", this.plugin.chat.getPlayerPrefix(player));
+    		   			QuitMessage = QuitMessage.replace("%prefix%", this.plugin.chat.getPlayerPrefix(player));
     		   			if (!plugin.getConfig().getBoolean("JoinAndQuit.Quit"))
     		   				return;
     	      Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',QuitMessage));
     	      return;
     			  }
     		}
-    		@EventHandler
+    		@SuppressWarnings("unused")
+			@EventHandler
     		public void onPlayerJoinEvent1(PlayerJoinEvent event) {
   			    Player player = (Player) event.getPlayer();
 		   		for(Player player1 : Bukkit.getOnlinePlayers()) {

@@ -10,13 +10,12 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
-
-import ru.tehkode.permissions.PermissionUser;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 public class SingHandler implements Listener {
 	private GLClass plugin;
@@ -130,7 +129,8 @@ public class SingHandler implements Listener {
   		System.out.println("Player " + e.getPlayer().getName() + " buy Business!");
 		p.sendMessage(SucessBusinessBuy + " " + region.getId());
 		Sign sign = (Sign) e.getClickedBlock().getState();
-		sign.setLine(2, ThreeLine + " " + p.getName());
+		sign.setLine(2, ThreeLine);
+		sign.setLine(3, p.getName());
 		sign.update();
 		this.plugin.getConfig().set("Info.owner", e.getPlayer().getName());
 		GLClass.getInsance().saveConfig();
@@ -139,11 +139,6 @@ public class SingHandler implements Listener {
 		String MessageTitleTwo = plugin.getConfig().getString("Sign.MessageTitleBusinessBuyTwoLine");
 		MessageTitleTwo = MessageTitleTwo.replace("&", "\u00a7");
         p.sendTitle(MessageTitle,MessageTitleTwo,20,90,20);
-		 PermissionUser user = PermissionsEx.getUser(p);
-		 user.addPermission("Business.balancetake");
-		 user.addPermission("Business.balance");
-		 user.addPermission("Business.Join");
-		 user.addPermission("Business.Quit");
 	}
 	
 	public String locToString(Location loc) {

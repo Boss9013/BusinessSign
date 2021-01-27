@@ -21,3 +21,6 @@ commands:
   swipebusiness:
     description: Shows info is Player.
     usage: /news [TEXT]
+  sreload:
+    description: Shows info is Player.
+    usage: /news [TEXT]

@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 
 public class EconomyManager implements Listener{
@@ -36,5 +37,5 @@ public class EconomyManager implements Listener{
 	}
 	public static double infoMoney(Player p) {
 		return e.getBalance(p);
-		}
+	}
 }

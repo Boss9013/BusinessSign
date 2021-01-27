@@ -16,11 +16,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Desktop/Мои проекты/Сервера/Сервер для проверок плагинов/plugins/PermissionsEx.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="D:/Desktop/Мои проекты/Сервера/Сервер для проверок плагинов/spigot.jar">
 		<attributes>
 			<attribute name="module" value="true"/>

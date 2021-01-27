@@ -26,6 +26,8 @@ this.plugin = plugin;
    		 sender.sendMessage("§a/sbalance§f - find out the business balance.");
    		 sender.sendMessage("§a/stakebalance §f- withdraw money from the business.");
    		 sender.sendMessage("§a/shopGUI §f- GUI shop from business.");
+   		 sender.sendMessage("§a/sremoveowner §f- remove owner from business.");
+   		 sender.sendMessage("§a/swipebusiness §f- wipe from business.");
    		 sender.sendMessage("§4WARNING:");
    		 sender.sendMessage("§cOnly 1 business can be put up for sale. 2 or more businesses can lead to a bug.");
    		 return true;

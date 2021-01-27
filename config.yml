@@ -3,7 +3,7 @@
 #check update, pls.
 Info:
   money: 0
-  owner: noOwner
+  owner: ''
 GUI:
   NameGUI: '&aShop'
   NameApple: '&cApple'
@@ -25,6 +25,7 @@ GUI:
   NameSteel: '&4Flint and Steel'
   LoreSteel: '&4Flint and Steel&f: 200 money'
 Messages:
+  Prefix: '&7<<&aBusiness&7>>:'
   BuyAppleMessage: '&aYou bought apples for 150 money'
   BuyBreadMessage: '&aYou bought bread for 40 money'
   BuyPotatoMessage: '&aYou bought potato for 90 money'
@@ -47,6 +48,7 @@ Messages:
     the business:'
   InsufficientBusinessFailedMessage: '&cThere are 0 coins on the business balance.'
   InsufficientBusinessBalanceMessage: '&fBalance of your business:'
+  Error: Unfortunately you are not a business owner
 Price:
   ApplePrice: 150
   BreadPrice: 40
@@ -83,6 +85,10 @@ JoinAndQuit:
   Join: true
   MessageQuit: '&aBusinessMan %prefix% &f%player% %suffix% &fleave server.'
   Quit: true
+ScoreBoard:
+  ScoreBoard: true
+  NameScoreBoard: '&6Business'
+  LoreScoreBoard: '&amoney:'
 #Пожалуйста, проверьте все наши обновление.
 #spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/
 #check update, pls.
