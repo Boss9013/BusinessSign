@@ -15,7 +15,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -261,6 +260,16 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		String Prefix = plugin.getConfig().getString("Messages.Prefix");
 		Prefix = Prefix.replace("&", "\u00a7");
 		
+		String Owner = plugin.getConfig().getString("Messages.BuyOwnerShopGUI");
+		Owner = Owner.replace("&", "\u00a7");
+		
+		String NullMaterial = plugin.getConfig().getString("Messages.NullMaterial");
+		NullMaterial = NullMaterial.replace("&", "\u00a7");
+		
+		int MaterialBusiness = plugin.getConfig().getInt("Info.material");
+		
+		int materialtake = plugin.getConfig().getInt("Price.MaterialTake");
+		
 		int priceApple = plugin.getConfig().getInt("Price.ApplePrice");
 		
 		int priceBread = plugin.getConfig().getInt("Price.BreadPrice");
@@ -296,12 +305,10 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		int NumberCompassGive = plugin.getConfig().getInt("NumberGive.NumberCompassGive");
 		
 		int NumberFireGive = plugin.getConfig().getInt("NumberGive.NumberSteelGive");
+
 		Player player = (Player) e.getWhoClicked();
         LocalTime time = LocalTime.now();
         Player player2 = (Player) Bukkit.getPlayer(plugin.getConfig().getString("Info.owner"));
-        String hour = time.getHour() < 10 ? "0" + time.getHour() : String.valueOf(time.getHour());
-        String minute = time.getMinute() < 10 ? "0" + time.getMinute() : String.valueOf(time.getMinute());
-        String second = time.getSecond() < 10 ? "0" + time.getSecond() : String.valueOf(time.getSecond());
 
 			if(e.getSlot() <= 9) e.setCancelled(true);
 				if(e.getSlot() == 0) {
@@ -311,11 +318,17 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money2 = money += priceApple;
+				int MaterialData = MaterialBusiness -= materialtake;
+                if(MaterialBusiness <= -1) {
+                	player.sendMessage(Prefix + " " + NullMaterial);
+                	return;
+                }
 				this.plugin.getConfig().set("Info.money", money2);
-				GLClass.getInsance().saveConfig();
+				this.plugin.getConfig().set("Info.material", MaterialData);
                 updateScoreboard(player2);
+				GLClass.getInsance().saveConfig();
                 List<String> list = GLClass.getLog().getStringList("logs");
-                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy apple");
+                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy apple " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 				player.sendMessage(Prefix + " " + TakeMoneyApple); player.getInventory().addItem(new ItemStack(Material.APPLE, NumberAppleGive));
@@ -327,11 +340,17 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money3 = money += priceBread;
+				int MaterialData = MaterialBusiness -= materialtake;
+                if(MaterialBusiness <= -1) {
+                	player.sendMessage(Prefix + " " + NullMaterial);
+                	return;
+                }
 				this.plugin.getConfig().set("Info.money", money3);
+				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
                 updateScoreboard(player2);
                 List<String> list = GLClass.getLog().getStringList("logs");
-                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy bread");
+                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy bread " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 			player.sendMessage(Prefix + " " + TakeMoneyBread); player.getInventory().addItem(new ItemStack(Material.BREAD, NumberBreadGive));
@@ -344,11 +363,17 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money4 = money += pricePotato;
+				int MaterialData = MaterialBusiness -= materialtake;
+                if(MaterialBusiness <= -1) {
+                	player.sendMessage(Prefix + " " + NullMaterial);
+                	return;
+                }
 				this.plugin.getConfig().set("Info.money", money4);
+				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
                 updateScoreboard(player2);
                 List<String> list = GLClass.getLog().getStringList("logs");
-                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy potato");
+                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy potato" + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 			player.sendMessage(Prefix + " " + TakeMoneyPotato); player.getInventory().addItem(new ItemStack(Material.BAKED_POTATO, NumberPotatoGive));
@@ -361,11 +386,17 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money5 = money += priceMilk;
+				int MaterialData = MaterialBusiness -= materialtake;
+                if(MaterialBusiness <= -1) {
+                	player.sendMessage(Prefix + " " + NullMaterial);
+                	return;
+                }
 				this.plugin.getConfig().set("Info.money", money5);
+				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
                 updateScoreboard(player2);
                 List<String> list = GLClass.getLog().getStringList("logs");
-                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy milk");
+                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy milk " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 			player.sendMessage(Prefix + " " + TakeMoneyMilk); player.getInventory().addItem(new ItemStack(Material.MILK_BUCKET, NumberMilkGive));
@@ -378,11 +409,17 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money7 = money += priceFishing;
+				int MaterialData = MaterialBusiness -= materialtake;
+                if(MaterialBusiness <= -1) {
+                	player.sendMessage(Prefix + " " + NullMaterial);
+                	return;
+                }
 				this.plugin.getConfig().set("Info.money", money7);
+				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
                 updateScoreboard(player2);
                 List<String> list = GLClass.getLog().getStringList("logs");
-                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy Fishing rod");
+                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy Fishing rod " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 			    player.sendMessage(Prefix + " " + TakeMoneyFishing); player.getInventory().addItem(new ItemStack(Material.FISHING_ROD, NumberFishingGive));
@@ -394,11 +431,17 @@ private Map<Player, Inventory> holders = new HashMap<>();
 					}
 					int money = this.plugin.getConfig().getInt("Info.money");
 					int money8 = money += priceBook;
+					int MaterialData = MaterialBusiness -= materialtake;
+	                if(MaterialBusiness <= -1) {
+	                	player.sendMessage(Prefix + " " + NullMaterial);
+	                	return;
+	                }
 					this.plugin.getConfig().set("Info.money", money8);
+					this.plugin.getConfig().set("Info.material", MaterialData);
 					GLClass.getInsance().saveConfig();
 	                updateScoreboard(player2);
 	                List<String> list = GLClass.getLog().getStringList("logs");
-	                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy book");
+	                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy book " + "total material: " + MaterialBusiness);
 	                GLClass.getLog().set("logs", list);
 	                GLClass.saveLog();
 				    player.sendMessage(Prefix + " " + TakeMoneyBook); player.getInventory().addItem(new ItemStack(Material.BOOK_AND_QUILL, NumberBookGive));
@@ -410,11 +453,17 @@ private Map<Player, Inventory> holders = new HashMap<>();
 					}
 			int money = this.plugin.getConfig().getInt("Info.money");
 			int money9 = money += priceClock;
+			int MaterialData = MaterialBusiness -= materialtake;
+            if(MaterialBusiness <= -1) {
+            	player.sendMessage(Prefix + " " + NullMaterial);
+            	return;
+            }
 			this.plugin.getConfig().set("Info.money", money9);
+			this.plugin.getConfig().set("Info.material", MaterialData);
 			GLClass.getInsance().saveConfig();
             updateScoreboard(player2);
             List<String> list = GLClass.getLog().getStringList("logs");
-            list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy clock");
+            list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy clock " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
 		    player.sendMessage(Prefix + " " + TakeMoneyClock); player.getInventory().addItem(new ItemStack(Material.WATCH, NumberClockGive));
@@ -425,12 +474,18 @@ private Map<Player, Inventory> holders = new HashMap<>();
 						return;
 					}
 			int money = this.plugin.getConfig().getInt("Info.money");
+			int MaterialData = MaterialBusiness -= materialtake;
+			this.plugin.getConfig().set("Info.material", MaterialData);
 			int money10 = money += priceCompass;
+            if(MaterialBusiness <= -1) {
+            	player.sendMessage(Prefix + " " + NullMaterial);
+            	return;
+            }
 			this.plugin.getConfig().set("Info.money", money10);
 			GLClass.getInsance().saveConfig();
             updateScoreboard(player2);
             List<String> list = GLClass.getLog().getStringList("logs");
-            list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy compass");
+            list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy compass " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
 		    player.sendMessage(Prefix + " " + TakeMoneyCompass); player.getInventory().addItem(new ItemStack(Material.COMPASS, NumberCompassGive));
@@ -440,13 +495,19 @@ private Map<Player, Inventory> holders = new HashMap<>();
 						player.sendMessage(Prefix + " " + TakeMoneyNullFire);
 						return;
 					}
+					int MaterialData = MaterialBusiness -= materialtake;
 			int money = this.plugin.getConfig().getInt("Info.money");
+			this.plugin.getConfig().set("Info.material", MaterialData);
 			int money11 = money += priceFire;
+            if(MaterialBusiness <= -1) {
+            	player.sendMessage(Prefix + " " + NullMaterial);
+            	return;
+            }
 			this.plugin.getConfig().set("Info.money", money11);
 			GLClass.getInsance().saveConfig();
             updateScoreboard(player2);
             List<String> list = GLClass.getLog().getStringList("logs");
-            list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy flint and steel");
+            list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy flint and steel " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
 		    player.sendMessage(Prefix + " " + TakeMoneyFire); player.getInventory().addItem(new ItemStack(Material.FLINT_AND_STEEL, NumberFireGive));
@@ -466,6 +527,9 @@ private Map<Player, Inventory> holders = new HashMap<>();
         		return;
         	}
         o.getScore(LoreScoreBoard1).setScore(plugin.getConfig().getInt("Info.money"));
+			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
+			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
+			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
         }
 	}
 }

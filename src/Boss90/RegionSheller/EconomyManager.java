@@ -4,8 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
-
-import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 
 public class EconomyManager implements Listener{

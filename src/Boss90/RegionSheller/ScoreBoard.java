@@ -27,9 +27,12 @@ public void j(PlayerJoinEvent e) {
    			NameScoreBoard = NameScoreBoard.replace("&", "\u00a7");
    			String LoreScoreBoard = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard");
    			LoreScoreBoard = LoreScoreBoard.replace("&", "\u00a7");
+   			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
+   			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
  			o.setDisplayName(NameScoreBoard);
  			o.setDisplaySlot(DisplaySlot.SIDEBAR);
  			o.getScore(LoreScoreBoard).setScore(plugin.getConfig().getInt("Info.money"));
+ 			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
  			e.getPlayer().setScoreboard(newScoreboard);
  			return;
 	 		}

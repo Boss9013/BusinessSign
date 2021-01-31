@@ -24,6 +24,7 @@ public class wipebusiness implements CommandExecutor, Listener {
    		 Player p = (Player) sender;
 		 this.plugin.getConfig().set("Info.owner", "");
 		 this.plugin.getConfig().set("Info.money", 0);
+		 this.plugin.getConfig().set("Info.material", 0);
 		 GLClass.getInsance().saveConfig();
 			String Prefix = plugin.getConfig().getString("Messages.Prefix");
 			Prefix = Prefix.replace("&", "\u00a7");
@@ -42,6 +43,9 @@ public class wipebusiness implements CommandExecutor, Listener {
         		return;
         	}
         o.getScore(LoreScoreBoard1).setScore(plugin.getConfig().getInt("Info.money"));
+			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
+			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
+			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
         }
 	}
 }

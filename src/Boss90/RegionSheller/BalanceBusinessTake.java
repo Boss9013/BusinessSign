@@ -53,7 +53,13 @@ this.plugin = plugin;
 		LoreScoreBoard1 = LoreScoreBoard1.replace("&", "\u00a7");
 		Scoreboard s = player.getScoreboard();
         Objective o = s.getObjective("stats"); {
+        	if(o == null) {
+        		return;
+        	}
         o.getScore(LoreScoreBoard1).setScore(plugin.getConfig().getInt("Info.money"));
+			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
+			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
+			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
         }
 	}
 }

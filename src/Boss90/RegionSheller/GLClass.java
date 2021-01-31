@@ -57,7 +57,8 @@ public class GLClass extends JavaPlugin implements Listener{
 	getCommand("shelp").setExecutor(new HelpToPlugin(this));
 	getCommand("sremoveowner").setExecutor(new removeOwner(this));
 	getCommand("swipebusiness").setExecutor(new wipebusiness(this));
-	getCommand("sreload").setExecutor(new ReloadPlugin());
+	getCommand("sreload").setExecutor(new ReloadPlugin(this));
+	getCommand("smaterial").setExecutor(new TakeMaterialBalance(this));
 	Bukkit.getPluginManager().registerEvents(new SingHandler(this), this);
 	Bukkit.getPluginManager().registerEvents(new EconomyManager(), this);
 	Bukkit.getPluginManager().registerEvents(new ShopGUI(this), this);
@@ -68,6 +69,8 @@ public class GLClass extends JavaPlugin implements Listener{
 	Bukkit.getPluginManager().registerEvents(new removeOwner(this), this);
 	Bukkit.getPluginManager().registerEvents(new wipebusiness(this), this);
 	Bukkit.getPluginManager().registerEvents(new ScoreBoard(this), this);
+	Bukkit.getPluginManager().registerEvents(new TakeMaterialBalance(this), this);
+	Bukkit.getPluginManager().registerEvents(new Taxes(this), this);
 	if (Bukkit.getServer().getPluginManager().getPlugin("WorldGuard") == null ) {
 			this.getLogger().info("[ERROR] First install the WorldGuard plugin");
 	}
@@ -85,7 +88,7 @@ public class GLClass extends JavaPlugin implements Listener{
 public static FileConfiguration getLog() {
 	return instance.log;
 }
-	public static GLClass getInstance() {
+	public static GLClass getInstance1() {
 		return plugin;
 		}
 		public static void saveData() {

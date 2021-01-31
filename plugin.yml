@@ -24,3 +24,6 @@ commands:
   sreload:
     description: Shows info is Player.
     usage: /news [TEXT]
+  smaterial:
+    description: Shows info is Player.
+    usage: /news [TEXT]

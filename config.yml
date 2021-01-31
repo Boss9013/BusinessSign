@@ -3,7 +3,8 @@
 #check update, pls.
 Info:
   money: 0
-  owner: ''
+  owner: 'Null'
+  material: 2000
 GUI:
   NameGUI: '&aShop'
   NameApple: '&cApple'
@@ -49,6 +50,9 @@ Messages:
   InsufficientBusinessFailedMessage: '&cThere are 0 coins on the business balance.'
   InsufficientBusinessBalanceMessage: '&fBalance of your business:'
   Error: Unfortunately you are not a business owner
+  BuyOwnerShopGUI: '&cYou owner business'
+  NullMaterial: '&cthe business ran out of materials.'
+  InsufficientBusinessMaterialMessage: ''
 Price:
   ApplePrice: 150
   BreadPrice: 40
@@ -59,6 +63,7 @@ Price:
   ClockPrice: 150
   CompassPrice: 100
   SteelPrice: 200
+  MaterialTake: 15
 NumberGive:
   NumberAppleGive: 15
   NumberBreadGive: 1
@@ -89,6 +94,35 @@ ScoreBoard:
   ScoreBoard: true
   NameScoreBoard: '&6Business'
   LoreScoreBoard: '&amoney:'
+  LoreScoreBoard2: '&amaterial:'
+MaterialGUI:
+  NameGUI: '&aMaterial business'
+  MaterialSlot3: 300
+  SkullName3: '&aMaterial'
+  SkullLore3: '&7Materials: 300, price: 4.500'
+  MaterialSlot7: 1500
+  SkullName7: '&aMaterial'
+  SkullLore7: '&7Materials: 1.500, price: 22.500'
+  SkullName5: '&aInfo.'
+  SkullLore5: '&7Total material:'
+  SkullLore5TwoLine: '&7Total balance:'
+  BalanceSlot2: 5000
+  SkullName2: '&aBalance'
+  SkullLore2: '&7Pay balance business: 5.000'
+  BalanceSlot8: 10000
+  SkullName8: '&aBalance'
+  SkullLore8: '&7Pay balance business: 10.000'
+  NullMaterial: '&cYou dont have enough money to buy the materials.'
+  BuyMaterialMessage: '&aYou have successfully purchased the materials.'
+  BuyBalanceMessage: '&aYou have replenished the balance of the business'
+  SkullMaterialInfo: MHF_Exclamation
+  SkullMaterialBalance: MrSnowDK
+  MaterialTake: 15
+  SkullMaterial: BigG0628
+Taxes:
+  Taxes: true
+  message: '[Unified Tax Service] 300 coins were withdrawn from the business.'
+  money: 300
 #Пожалуйста, проверьте все наши обновление.
 #spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/
 #check update, pls.

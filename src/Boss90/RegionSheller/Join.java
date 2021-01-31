@@ -15,7 +15,6 @@ public class Join implements Listener{
 	public Join(GLClass plugin) {
 	this.plugin = plugin;
 	}
-	@SuppressWarnings("unused")
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event) {
 		  Player player = (Player) event.getPlayer();
@@ -23,6 +22,9 @@ public class Join implements Listener{
 	   			String JoinMessage = plugin.getConfig().getString("JoinAndQuit.MessageJoin");
 	   			JoinMessage = JoinMessage.replace("&", "\u00a7");
 	   			JoinMessage = JoinMessage.replace("%player%", event.getPlayer().getName());
+	   			if(plugin.chat == null) {
+	   				return;
+	   			}
 	   			JoinMessage = JoinMessage.replace("%suffix%", this.plugin.chat.getPlayerPrefix(player));
 	   			JoinMessage = JoinMessage.replace("%prefix%", this.plugin.chat.getPlayerPrefix(player));
 	   			if (!plugin.getConfig().getBoolean("JoinAndQuit.Join"))
@@ -36,6 +38,9 @@ public class Join implements Listener{
     			  Player player = (Player) event.getPlayer();
     		   		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName())) {
     		   			String QuitMessage = plugin.getConfig().getString("JoinAndQuit.MessageQuit");
+    		   			if(plugin.chat == null) {
+    		   				return;
+    		   			}
     		   			QuitMessage = QuitMessage.replace("&", "\u00a7");
     		   			QuitMessage = QuitMessage.replace("%player%", event.getPlayer().getName());
     		   			QuitMessage = QuitMessage.replace("%suffix%", this.plugin.chat.getPlayerPrefix(player));
