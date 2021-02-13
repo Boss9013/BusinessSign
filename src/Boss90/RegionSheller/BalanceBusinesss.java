@@ -7,10 +7,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-public class BalanceBusiness implements CommandExecutor, Listener {
+public class BalanceBusinesss implements CommandExecutor, Listener {
 private GLClass plugin;
 
-public BalanceBusiness(GLClass plugin) {
+public BalanceBusinesss(GLClass plugin) {
 this.plugin = plugin;
 }
 	@Override

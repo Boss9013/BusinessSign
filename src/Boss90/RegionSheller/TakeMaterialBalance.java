@@ -35,40 +35,35 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		String NameGUI = plugin.getConfig().getString("MaterialGUI.NameGUI");
-		NameGUI = NameGUI.replace("&", "\u00a7");
 		Player p = (Player) sender;
- 		if(this.plugin.getConfig().getString("Info.owner").contains(p.getName())) {
+ 		if(this.plugin.getConfig().getString("Info.owner").contains(p.getName()) || this.plugin.getConfig().getStringList("Staff").contains(p.getName())) {
 		Inventory i = holders.get(p);
 		if(i == null) {
-			i = Bukkit.createInventory(null, 9, NameGUI);
+			i = Bukkit.createInventory(null, 9, ChatColor.translateAlternateColorCodes('&',NameGUI));
 			holders.put(p, i);
 		}
 		String SkullMaterial = plugin.getConfig().getString("MaterialGUI.SkullMaterial");
 		String SkullLore = plugin.getConfig().getString("MaterialGUI.SkullLore3");
-	    SkullLore = SkullLore.replace("&", "\u00a7");
 		String SkullName = plugin.getConfig().getString("MaterialGUI.SkullName3");
-	    SkullName = SkullName.replace("&", "\u00a7");
             ItemStack i2 = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
             SkullMeta meta = (SkullMeta) i2.getItemMeta();
-            meta.setOwner(SkullMaterial);
-            meta.setDisplayName(SkullName);
+            meta.setOwner(ChatColor.translateAlternateColorCodes('&',SkullMaterial));
+            meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',SkullName));
             ArrayList<String> lore = new ArrayList<String>();
-            lore.add(SkullLore);
+            lore.add(ChatColor.translateAlternateColorCodes('&',SkullLore + " " + EconomyManager.infoMoney(p)));
             meta.setLore(lore);
             i2.setItemMeta(meta);
             i.setItem(2, i2);
             p.openInventory(i);
 			
     		String SkullLore2 = plugin.getConfig().getString("MaterialGUI.SkullLore7");
-    	    SkullLore2 = SkullLore2.replace("&", "\u00a7");
     		String SkullName2 = plugin.getConfig().getString("MaterialGUI.SkullName7");
-    	    SkullName2 = SkullName2.replace("&", "\u00a7");
             ItemStack i3 = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
             SkullMeta meta3 = (SkullMeta) i3.getItemMeta();
             meta3.setOwner(SkullMaterial);
-            meta3.setDisplayName(SkullName2);
+            meta3.setDisplayName(ChatColor.translateAlternateColorCodes('&',SkullName2));
             ArrayList<String> lore2 = new ArrayList<String>();
-            lore2.add(SkullLore2);
+            lore2.add(ChatColor.translateAlternateColorCodes('&',SkullLore2 + " " + EconomyManager.infoMoney(p)));
             meta3.setLore(lore2);
             i3.setItemMeta(meta3);
             i.setItem(6, i3);
@@ -76,18 +71,19 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
             
     		String SkullMaterial2 = plugin.getConfig().getString("MaterialGUI.SkullMaterialInfo");
     		String SkullLore3 = plugin.getConfig().getString("MaterialGUI.SkullLore5");
-    	    SkullLore3 = SkullLore3.replace("&", "\u00a7");
     		String SkullName3 = plugin.getConfig().getString("MaterialGUI.SkullName5");
-    	    SkullName3 = SkullName3.replace("&", "\u00a7");
     		String SkullLore4 = plugin.getConfig().getString("MaterialGUI.SkullLore5TwoLine");
-    	    SkullLore4= SkullLore4.replace("&", "\u00a7");
+    		String SkullLore9 = plugin.getConfig().getString("MaterialGUI.SkullLore5ThreeLine");
+    		String SkullLore0 = plugin.getConfig().getString("MaterialGUI.SkullLore5FourLine");
             ItemStack i4 = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
             SkullMeta meta4 = (SkullMeta) i4.getItemMeta();
             meta4.setOwner(SkullMaterial2);
-            meta4.setDisplayName(SkullName3);
+            meta4.setDisplayName(ChatColor.translateAlternateColorCodes('&',SkullName3));
             ArrayList<String> lore3 = new ArrayList<String>();
-            lore3.add(SkullLore3 + " " + plugin.getConfig().getInt("Info.material"));
-            lore3.add(SkullLore4 + " " + plugin.getConfig().getInt("Info.money"));
+            lore3.add(ChatColor.translateAlternateColorCodes('&',SkullLore3 + " " + plugin.getConfig().getInt("Info.material")));
+            lore3.add(ChatColor.translateAlternateColorCodes('&',SkullLore4 + " " + plugin.getConfig().getInt("Info.money")));
+            lore3.add(ChatColor.translateAlternateColorCodes('&',SkullLore9 + " " + plugin.getConfig().getStringList("Staff")));
+            lore3.add(ChatColor.translateAlternateColorCodes('&',SkullLore0 + " " + GLClass.getData().getInt("Info.24")));
             meta4.setLore(lore3);
             i4.setItemMeta(meta4);
             i.setItem(4, i4);
@@ -95,15 +91,13 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
             
     		String SkullMaterial3 = plugin.getConfig().getString("MaterialGUI.SkullMaterialBalance");
     		String SkullLore5 = plugin.getConfig().getString("MaterialGUI.SkullLore2");
-    	    SkullLore5 = SkullLore5.replace("&", "\u00a7");
     		String SkullName4 = plugin.getConfig().getString("MaterialGUI.SkullName2");
-    	    SkullName4 = SkullName4.replace("&", "\u00a7");
             ItemStack i6 = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
             SkullMeta meta5 = (SkullMeta) i6.getItemMeta();
             meta5.setOwner(SkullMaterial3);
-            meta5.setDisplayName(SkullName4);
+            meta5.setDisplayName(ChatColor.translateAlternateColorCodes('&',SkullName4));
             ArrayList<String> lore4 = new ArrayList<String>();
-            lore4.add(SkullLore5);
+            lore4.add(ChatColor.translateAlternateColorCodes('&',SkullLore5 + " " + EconomyManager.infoMoney(p)));
             meta5.setLore(lore4);
             i6.setItemMeta(meta5);
             i.setItem(1, i6);
@@ -111,15 +105,14 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
             
     		String SkullMaterial4 = plugin.getConfig().getString("MaterialGUI.SkullMaterialBalance");
     		String SkullLore6 = plugin.getConfig().getString("MaterialGUI.SkullLore8");
-    	    SkullLore6 = SkullLore6.replace("&", "\u00a7");
     		String SkullName5 = plugin.getConfig().getString("MaterialGUI.SkullName8");
     	    SkullName5 = SkullName5.replace("&", "\u00a7");
             ItemStack i7 = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
             SkullMeta meta6 = (SkullMeta) i7.getItemMeta();
             meta6.setOwner(SkullMaterial4);
-            meta6.setDisplayName(SkullName5);
+            meta6.setDisplayName(ChatColor.translateAlternateColorCodes('&',SkullName5));
             ArrayList<String> lore5 = new ArrayList<String>();
-            lore5.add(SkullLore6);
+            lore5.add(ChatColor.translateAlternateColorCodes('&',SkullLore6 + " " + EconomyManager.infoMoney(p)));
             meta6.setLore(lore5);
             i7.setItemMeta(meta6);
             i.setItem(7, i7);
@@ -127,11 +120,9 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
             return true;
 		} else {
 			String Prefix = plugin.getConfig().getString("Messages.Prefix");
-			Prefix = Prefix.replace("&", "\u00a7");
 			
 			String Error = plugin.getConfig().getString("Messages.Error");
-			Error = Error.replace("&", "\u00a7");
-			p.sendMessage(Prefix + " " + Error);
+			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + Error));
 			return true;
 		}
 	}
@@ -140,10 +131,9 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 		public void handle(InventoryClickEvent e) {
 			Player player = (Player) e.getWhoClicked();
 			String NameGUI = plugin.getConfig().getString("MaterialGUI.NameGUI");
-			NameGUI = NameGUI.replace("&", "\u00a7");
 			
 			Inventory i = e.getInventory();
-			if(ChatColor.stripColor(i.getName()).equals(ChatColor.stripColor(NameGUI))) {
+			if(ChatColor.stripColor(i.getName()).equals(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',NameGUI)))) {
 			Inventory c = e.getClickedInventory();
 			try {
 			if(e.getClickedInventory() == null) {
@@ -152,23 +142,18 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 			}catch (NullPointerException ignored) {}
 			if(c.equals(i)) {
 			String Prefix = plugin.getConfig().getString("Messages.Prefix");
-			Prefix = Prefix.replace("&", "\u00a7");
 			
 			int MaterialBusiness = plugin.getConfig().getInt("Info.material");
 			
 			int materialtake = plugin.getConfig().getInt("MaterialGUI.MaterialTake");
 			
 			String NullMaterial = plugin.getConfig().getString("MaterialGUI.NullMaterial");
-			NullMaterial = NullMaterial.replace("&", "\u00a7");
 			
 			String BuyMaterial = plugin.getConfig().getString("MaterialGUI.BuyMaterialMessage");
-			BuyMaterial = BuyMaterial.replace("&", "\u00a7");
 			
 			String BuyBalance = plugin.getConfig().getString("MaterialGUI.BuyBalanceMessage");
-			BuyBalance = BuyBalance.replace("&", "\u00a7");
 			
     		String SkullLore3 = plugin.getConfig().getString("MaterialGUI.SkullLore5");
-    	    SkullLore3 = SkullLore3.replace("&", "\u00a7");
     	    
 	        LocalTime time = LocalTime.now();
 	        Player player2 = (Player) Bukkit.getPlayer(plugin.getConfig().getString("Info.owner"));
@@ -183,13 +168,13 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 	            GLClass.saveLog();
 				int summa = price *= materialtake;
 			if(!EconomyManager.takeMoney(player, summa)) {
-				player.sendMessage(Prefix + " " + NullMaterial);
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
 				return;
 			}
 					this.plugin.getConfig().set("Info.material", materialitog);
 	                updateScoreboard(player2);
 					GLClass.getInsance().saveConfig();
-					player.sendMessage(Prefix + " " + BuyMaterial);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + BuyMaterial));
 					return;
 					}
 			if(e.getSlot() == 6) {
@@ -201,13 +186,13 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 	            GLClass.saveLog();
 				int summa2 = price2 *= materialtake;
 			if(!EconomyManager.takeMoney(player, summa2)) {
-				player.sendMessage(Prefix + " " + NullMaterial);
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
 				return;
 			}
 					this.plugin.getConfig().set("Info.material", materialito2);
 	                updateScoreboard(player2);
 					GLClass.getInsance().saveConfig();
-					player.sendMessage(Prefix + " " + BuyMaterial);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + BuyMaterial));
 					return;
 					}
 			if(e.getSlot() == 1) {
@@ -219,13 +204,13 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 	            GLClass.getLog().set("logs", list);
 	            GLClass.saveLog();
 			if(!EconomyManager.takeMoney(player, price)) {
-				player.sendMessage(Prefix + " " + NullMaterial);
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
 				return;
 			}
 					this.plugin.getConfig().set("Info.money", materialito2);
 	                updateScoreboard(player2);
 					plugin.saveConfig();
-					player.sendMessage(Prefix + " " + BuyBalance);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + BuyBalance));
 					return;
 					}
 			if(e.getSlot() == 7) {
@@ -237,13 +222,13 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 	            GLClass.getLog().set("logs", list);
 	            GLClass.saveLog();
 			if(!EconomyManager.takeMoney(player, price)) {
-				player.sendMessage(Prefix + " " + NullMaterial);
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
 				return;
 			}
 					this.plugin.getConfig().set("Info.money", materialito2);
 	                updateScoreboard(player2);
 					plugin.saveConfig();
-					player.sendMessage(Prefix + " " + BuyBalance);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + BuyBalance));
 					return;
 					}
 			}
@@ -251,7 +236,6 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 		}
 		private void updateScoreboard(Player player) {
 			String LoreScoreBoard1 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard");
-			LoreScoreBoard1 = LoreScoreBoard1.replace("&", "\u00a7");
 			if(player == null) {
 				return;
 			}
@@ -260,10 +244,9 @@ public class TakeMaterialBalance implements CommandExecutor, Listener {
 	        	if(o == null) {
 	        		return;
 	        	}
-	        o.getScore(LoreScoreBoard1).setScore(plugin.getConfig().getInt("Info.money"));
+	        o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard1)).setScore(plugin.getConfig().getInt("Info.money"));
 			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
-			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
-			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
+			o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard2)).setScore(plugin.getConfig().getInt("Info.material"));
 	        }
 		}
 }

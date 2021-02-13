@@ -18,9 +18,8 @@ public class Join implements Listener{
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event) {
 		  Player player = (Player) event.getPlayer();
-	   		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName())) {
+	 		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName()) || this.plugin.getConfig().getStringList("Staff").contains(player.getName())) {
 	   			String JoinMessage = plugin.getConfig().getString("JoinAndQuit.MessageJoin");
-	   			JoinMessage = JoinMessage.replace("&", "\u00a7");
 	   			JoinMessage = JoinMessage.replace("%player%", event.getPlayer().getName());
 	   			if(plugin.chat == null) {
 	   				return;
@@ -36,12 +35,11 @@ public class Join implements Listener{
 			@EventHandler
     		public void onPlayerQuitEvent(PlayerQuitEvent event) {
     			  Player player = (Player) event.getPlayer();
-    		   		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName())) {
+    		 		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName()) || this.plugin.getConfig().getStringList("Staff").contains(player.getName())) {
     		   			String QuitMessage = plugin.getConfig().getString("JoinAndQuit.MessageQuit");
     		   			if(plugin.chat == null) {
     		   				return;
     		   			}
-    		   			QuitMessage = QuitMessage.replace("&", "\u00a7");
     		   			QuitMessage = QuitMessage.replace("%player%", event.getPlayer().getName());
     		   			QuitMessage = QuitMessage.replace("%suffix%", this.plugin.chat.getPlayerPrefix(player));
     		   			QuitMessage = QuitMessage.replace("%prefix%", this.plugin.chat.getPlayerPrefix(player));

@@ -2,29 +2,29 @@
 #spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/
 #check update, pls.
 Info:
-  money: 0
-  owner: 'Null'
-  material: 2000
+  money: 1570
+  owner: Boss90
+  material: 5805
 GUI:
   NameGUI: '&aShop'
   NameApple: '&cApple'
-  LoreApple: '&cApple&f: 150 money, 15 number'
+  LoreApple: '&cApple&f: 150 money, 15 number, you balance:'
   NameBread: '&6Bread'
-  LoreBread: '&6Bread&f: 40 money'
+  LoreBread: '&6Bread&f: 40 money, you balance:'
   NamePotato: '&aPotato'
-  LorePotato: '&aPotato: &f90 money, 5 number'
+  LorePotato: '&aPotato: &f90 money, 5 number, you balance:'
   NameMilk: '&fMilk'
-  LoreMilk: '&fMilk: 50 money'
+  LoreMilk: '&fMilk: 50 money, you balance:'
   NameFishing: '&3Fishing Rod'
-  LoreFishing: '&3Fishing Rod&f: 500 money'
+  LoreFishing: '&3Fishing Rod&f: 500 money, you balance:'
   NameBook: '&cWritable Book'
-  LoreBook: '&cWritable Book&f: 100 money'
+  LoreBook: '&cWritable Book&f: 100 money, you balance:'
   NameClock: '&eClock'
-  LoreClock: '&eClock&f: 150 money'
+  LoreClock: '&eClock&f: 150 money, you balance:'
   NameCompass: '&7Compass'
-  LoreCompass: '&7Compass&f: 100 money'
+  LoreCompass: '&7Compass&f: 100 money, you balance:'
   NameSteel: '&4Flint and Steel'
-  LoreSteel: '&4Flint and Steel&f: 200 money'
+  LoreSteel: '&4Flint and Steel&f: 200 money, you balance:'
 Messages:
   Prefix: '&7<<&aBusiness&7>>:'
   BuyAppleMessage: '&aYou bought apples for 150 money'
@@ -53,6 +53,15 @@ Messages:
   BuyOwnerShopGUI: '&cYou owner business'
   NullMaterial: '&cthe business ran out of materials.'
   InsufficientBusinessMaterialMessage: ''
+  AddStaffError: '&cYou have already added this player.'
+  AddStaffMessage: '&aYou have successfully added a player.'
+  StaffNullMessage: '&cEnter the player.'
+  RemoveStaffMessage: '&aYou have successfully remove a player.'
+  AddWorkerError: '&cYou have already added this player.'
+  AddWorkerMessage: '&aYou have successfully added a player.'
+  WorkerNullMessage: '&cEnter the player.'
+  RemoveWorkerMessage: '&aYou have successfully remove a player.'
+  RemoveWorkerError: '&cYou have already added this player.'
 Price:
   ApplePrice: 150
   BreadPrice: 40
@@ -85,6 +94,7 @@ Sign:
   ThirdLine: 'bought:'
   MessageTitleBusinessBuy: '&aYou have buy business!'
   MessageTitleBusinessBuyTwoLine: '&aHappy you'
+  MessageRegionNull: '&cRegion is null.'
 JoinAndQuit:
   MessageJoin: '&aBusinessMan %prefix% &f%player% %suffix% &fjoin server.'
   Join: true
@@ -104,8 +114,10 @@ MaterialGUI:
   SkullName7: '&aMaterial'
   SkullLore7: '&7Materials: 1.500, price: 22.500'
   SkullName5: '&aInfo.'
-  SkullLore5: '&7Total material:'
-  SkullLore5TwoLine: '&7Total balance:'
+  SkullLore5: '&7Total material:&f'
+  SkullLore5TwoLine: '&7Total balance:&f'
+  SkullLore5ThreeLine: '&7Staff:&f'
+  SkullLore5FourLine: '&7The money received today:&f'
   BalanceSlot2: 5000
   SkullName2: '&aBalance'
   SkullLore2: '&7Pay balance business: 5.000'
@@ -123,6 +135,17 @@ Taxes:
   Taxes: true
   message: '[Unified Tax Service] 300 coins were withdrawn from the business.'
   money: 300
+Vote:
+  MessageFalse: Vote not started.
+  MessageTrue: Select a candidate by giving the administrator a piece of paper
+  BroadcastMessageStartVote: '&7<<&aBusiness&7>>: Voting has begun! Candidate: %arg1%,
+    %arg2%, %arg3%.'
+  BroadcastMessageStopVote: '&7<<&aBusiness&7>>: Voting stopped.'
+  start: 'false'
+  Nick1: ''
+  Nick2: ''
+  Nick3: ''
+Staff: '[]'
 #Пожалуйста, проверьте все наши обновление.
 #spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/
 #check update, pls.

@@ -11,26 +11,30 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-public class removeOwner implements CommandExecutor, Listener {
+public class SetOwner implements CommandExecutor, Listener {
 	private GLClass plugin;
 
-	public removeOwner(GLClass plugin) {
+	public SetOwner(GLClass plugin) {
 	this.plugin = plugin;
 	}
 	@Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-   	 if(!sender.hasPermission("Business.removeowner")) {
+   	 if(!sender.hasPermission("Business.setowner")) {
    		 sender.sendMessage("§cError");
    		 return true;			 
    	 }
    	 {
-   		 Player p = (Player) sender;
-		 this.plugin.getConfig().set("Info.owner", "Null");
-		 GLClass.getInsance().saveConfig();
 			String Prefix = plugin.getConfig().getString("Messages.Prefix");
-		 p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + "You removed the business owner"));
+   		 Player p = (Player) sender;
+   		 if(args.length == 0) {
+   			 p.sendMessage(Prefix + " Enter nickname.");
+   			 return true;
+   		 }
+		 this.plugin.getConfig().set("Info.owner", args[0]);
+		 GLClass.getInsance().saveConfig();
+		 p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + "You set the business owner: " + args[0]));
          List<String> list = GLClass.getLog().getStringList("logs");
-         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " removed owner");
+         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " set owner: " + args[0]);
          GLClass.getLog().set("logs", list);
          GLClass.saveLog();
    	 }

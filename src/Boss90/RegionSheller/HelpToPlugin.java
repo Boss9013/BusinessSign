@@ -13,8 +13,8 @@ this.plugin = plugin;
 }
 	@Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-   	 if(!sender.hasPermission("Business.balance")) {
-   		 sender.sendMessage("§cÓ âàñ íåòó ïğàâ!");
+   	 if(!sender.hasPermission("Business.help")) {
+   		 sender.sendMessage("§cError");
    		 return true;			 
    	 }
    	 {

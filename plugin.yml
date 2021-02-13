@@ -27,3 +27,27 @@ commands:
   smaterial:
     description: Shows info is Player.
     usage: /news [TEXT]
+  saddstaff:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  sremovestaff:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  saddworker:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  sremoveworker:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  sstartvote:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  svote:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  sstopvote:
+    description: Shows info is Player.
+    usage: /news [TEXT]
+  ssetowner:
+    description: Shows info is Player.
+    usage: /news [TEXT]

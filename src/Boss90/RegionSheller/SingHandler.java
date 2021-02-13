@@ -1,9 +1,13 @@
 package Boss90.RegionSheller;
 
-import org.bukkit.Effect;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,7 +16,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -24,15 +27,12 @@ public class SingHandler implements Listener {
 	this.plugin = plugin;
 	}
 	public static Player player;
-	
+
 	@EventHandler
 	public void create(SignChangeEvent e) {
 		String InvalidPrice = plugin.getConfig().getString("Sign.InvalidPrice");
-		InvalidPrice = InvalidPrice.replace("&", "\u00a7");
 		String FirstLine = plugin.getConfig().getString("Sign.FirstLine");
-		FirstLine = FirstLine.replace("&", "\u00a7");
 		String TwoLine = plugin.getConfig().getString("Sign.TwoLine");
-		TwoLine = TwoLine.replace("&", "\u00a7");
 		Player p = e.getPlayer();
 		if(!p.hasPermission("Business.CreateBusiness")) return;
 		
@@ -44,23 +44,29 @@ public class SingHandler implements Listener {
 		try {
 			amount = Double.parseDouble(e.getLine(2));
 		}   catch (NumberFormatException el) {
-			e.setLine(3, InvalidPrice);
+			e.setLine(3, ChatColor.translateAlternateColorCodes('&',InvalidPrice));
 			return;
 		}
 		
 		if(amount < 0) {
-			e.setLine(3, InvalidPrice);
+			e.setLine(3, ChatColor.translateAlternateColorCodes('&',InvalidPrice));
 			return;
 		}
 		
 		String key = locToString(e.getBlock().getLocation());
-		
 		GLClass.getData().set(key + ".region", name);
 		GLClass.getData().set(key + ".price", amount);
 		GLClass.saveData();
-		p.sendMessage("§aSell business create");
-		e.setLine(0, FirstLine);
-		e.setLine(2, TwoLine + " " + amount);
+		String Prefix = plugin.getConfig().getString("Messages.Prefix");
+		p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " §aSell business create"));
+		e.setLine(0, ChatColor.translateAlternateColorCodes('&',FirstLine));
+		e.setLine(2, ChatColor.translateAlternateColorCodes('&',TwoLine + " " + amount));
+        GLClass.saveData();
+        Block b = e.getBlock();
+        List<String> list = GLClass.getLog().getStringList("logs");
+        list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " creating business " + b.getX() + " " + b.getY() + " " + b.getZ());
+        GLClass.getLog().set("logs", list);
+        GLClass.saveLog();
 	}
 	@EventHandler
 	public void onBreak(BlockBreakEvent e) {
@@ -68,16 +74,19 @@ public class SingHandler implements Listener {
 		if(!p.hasPermission("Business.DeleteBusiness")) return;
 		Material t = e.getBlock().getType();
 		if(t != Material.SIGN_POST && t != Material.WALL_SIGN) return;
-		
-
+		String Prefix = plugin.getConfig().getString("Messages.Prefix");
 		String key = locToString(e.getBlock().getLocation());
 		if(GLClass.getData().getString(key + ".region") != null) {
 			GLClass.getData().set(key, null);
+			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " §cSell business delete."));
 			GLClass.saveData();
-			p.sendMessage("§cSell business delete.");
+	        Block b = e.getBlock();
+	        List<String> list = GLClass.getLog().getStringList("logs");
+	        list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " deleted business " + b.getX() + " " + b.getY() + " " + b.getZ());
+	        GLClass.getLog().set("logs", list);
+	        GLClass.saveLog();
 		}
 	}
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void click(PlayerInteractEvent e) {
 		if(e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
@@ -98,51 +107,52 @@ public class SingHandler implements Listener {
 		ProtectedRegion region = manager.getRegion(rg);
 		
 		String BusinessErrorBuy = plugin.getConfig().getString("Sign.BusinessErrorBuy");
-		BusinessErrorBuy = BusinessErrorBuy.replace("&", "\u00a7");
 		
 		String Invalid = plugin.getConfig().getString("Sign.InsufficientFundsMessage");
-		Invalid = Invalid.replace("&", "\u00a7");
+		
+		String Prefix = plugin.getConfig().getString("Messages.Prefix");
+		
+		String NullRegion = plugin.getConfig().getString("Sign.MessageRegionNull");
 		
 		if(region == null) {
-			p.sendMessage("§cRegion is null.");
+			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullRegion));
 			return;
 		}
 		
 		if(region.getOwners().size() > 0 || region.getMembers().size() > 0) {
-			p.sendMessage(BusinessErrorBuy);
+			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + BusinessErrorBuy));
 			return;
 		}
 		
 		if(!EconomyManager.takeMoney(p, price)) {
-			p.sendMessage(Invalid);
+			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + Invalid));
 			return;
 		}
 		String SucessBusinessBuy = plugin.getConfig().getString("Sign.MessageBusinessBuy");
-		SucessBusinessBuy = SucessBusinessBuy.replace("&", "\u00a7");
 		
 		String ThreeLine = plugin.getConfig().getString("Sign.ThirdLine");
-		ThreeLine = ThreeLine.replace("&", "\u00a7");
 		
 		region.getOwners().addPlayer(p.getName());
 		
 		GLClass.getData().set(key, null);
 		GLClass.saveData();
   		System.out.println("Player " + e.getPlayer().getName() + " buy Business!");
-		p.sendMessage(SucessBusinessBuy + " " + region.getId());
+		p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + SucessBusinessBuy + " " + region.getId()));
 		Sign sign = (Sign) e.getClickedBlock().getState();
-		sign.setLine(2, ThreeLine);
+		sign.setLine(2, ChatColor.translateAlternateColorCodes('&',ThreeLine));
 		sign.setLine(3, p.getName());
 		sign.update();
-		Location loc = p.getLocation();
-        World w = loc.getWorld();
-        w.spigot().playEffect(loc, Effect.PORTAL, 0, 0, 0.1f, 1f, 3f, 0.2f, 88, 10);
 		this.plugin.getConfig().set("Info.owner", e.getPlayer().getName());
 		GLClass.getInsance().saveConfig();
 		String MessageTitle = plugin.getConfig().getString("Sign.MessageTitleBusinessBuy");
-		MessageTitle = MessageTitle.replace("&", "\u00a7");
 		String MessageTitleTwo = plugin.getConfig().getString("Sign.MessageTitleBusinessBuyTwoLine");
+		MessageTitle = MessageTitle.replace("&", "\u00a7");
 		MessageTitleTwo = MessageTitleTwo.replace("&", "\u00a7");
         p.sendTitle(MessageTitle,MessageTitleTwo,20,90,20);
+        List<String> list = GLClass.getLog().getStringList("logs");
+        list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " buy business");
+        GLClass.getLog().set("logs", list);
+        GLClass.saveLog();
 	}
 	
 	public String locToString(Location loc) {

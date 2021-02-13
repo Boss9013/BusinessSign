@@ -1,6 +1,7 @@
 package Boss90.RegionSheller;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,19 +21,16 @@ public void j(PlayerJoinEvent e) {
 		if (!plugin.getConfig().getBoolean("ScoreBoard.ScoreBoard"))
 				return;
 	  Player player = (Player) e.getPlayer();
- 		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName())) {
+		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName()) || this.plugin.getConfig().getStringList("Staff").contains(player.getName())) {
  			Scoreboard newScoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
  			Objective o = newScoreboard.registerNewObjective("stats", "dummy");
    			String NameScoreBoard = plugin.getConfig().getString("ScoreBoard.NameScoreBoard");
-   			NameScoreBoard = NameScoreBoard.replace("&", "\u00a7");
    			String LoreScoreBoard = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard");
-   			LoreScoreBoard = LoreScoreBoard.replace("&", "\u00a7");
    			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
-   			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
- 			o.setDisplayName(NameScoreBoard);
+ 			o.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameScoreBoard));
  			o.setDisplaySlot(DisplaySlot.SIDEBAR);
- 			o.getScore(LoreScoreBoard).setScore(plugin.getConfig().getInt("Info.money"));
- 			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
+ 			o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard)).setScore(plugin.getConfig().getInt("Info.money"));
+ 			o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard2)).setScore(plugin.getConfig().getInt("Info.material"));
  			e.getPlayer().setScoreboard(newScoreboard);
  			return;
 	 		}

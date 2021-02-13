@@ -1,5 +1,10 @@
 package Boss90.RegionSheller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,27 +30,30 @@ public class wipebusiness implements CommandExecutor, Listener {
 		 this.plugin.getConfig().set("Info.owner", "");
 		 this.plugin.getConfig().set("Info.money", 0);
 		 this.plugin.getConfig().set("Info.material", 0);
+		 this.plugin.getConfig().set("Staff", "[]");
 		 GLClass.getInsance().saveConfig();
 			String Prefix = plugin.getConfig().getString("Messages.Prefix");
 			Prefix = Prefix.replace("&", "\u00a7");
             updateScoreboard(p);
 		 p.sendMessage(Prefix + " " + "The business was successfully wipe");
+         List<String> list = GLClass.getLog().getStringList("logs");
+         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + p.getName() + " wiped business.");
+         GLClass.getLog().set("logs", list);
+         GLClass.saveLog();
    	 }
    	 return true;
 	}
 	private void updateScoreboard(Player player) {
 		String LoreScoreBoard1 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard");
-		LoreScoreBoard1 = LoreScoreBoard1.replace("&", "\u00a7");
 		Scoreboard s = player.getScoreboard();
         Objective o = s.getObjective("stats"); {
         	if(o == null) {
         		player.sendMessage("Error");
         		return;
         	}
-        o.getScore(LoreScoreBoard1).setScore(plugin.getConfig().getInt("Info.money"));
+        o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard1)).setScore(plugin.getConfig().getInt("Info.money"));
 			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
-			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
-			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
+			o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard2)).setScore(plugin.getConfig().getInt("Info.material"));
         }
 	}
 }

@@ -1,6 +1,11 @@
 package Boss90.RegionSheller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -35,15 +40,23 @@ public class Taxes implements Listener {
 			 plugin.getConfig().set("Info.money", price);
 			 plugin.saveConfig();
       		 String message = plugin.getConfig().getString("Taxes.message");
-    	     message = message.replace("&", "\u00a7");
-			 Bukkit.broadcastMessage(message);
+			 Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',message));
 			 updateScoreboard(p);
+		        List<String> list = GLClass.getLog().getStringList("logs");
+		        list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " pay Taxes: " + price2 + " total money: " + money);
+		        GLClass.getLog().set("logs", list);
+		        GLClass.saveLog();
 			 return;
 		     }, 75000L, 75000L);
 }
+	{
+	     Bukkit.getScheduler().runTaskTimer(GLClass.getInsance(), () -> {
+			 GLClass.getData().set("Info.24", 0);
+				GLClass.saveData();
+	     }, 1728000L, 1728000L);
+	}
 	private void updateScoreboard(Player player) {
 		String LoreScoreBoard1 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard");
-		LoreScoreBoard1 = LoreScoreBoard1.replace("&", "\u00a7");
 		if(player == null) {
 			return;
 		}
@@ -52,10 +65,9 @@ public class Taxes implements Listener {
         	if(o == null) {
         		return;
         	}
-        o.getScore(LoreScoreBoard1).setScore(plugin.getConfig().getInt("Info.money"));
+        o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard1)).setScore(plugin.getConfig().getInt("Info.money"));
 		String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
-		LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
-		o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
+		o.getScore(ChatColor.translateAlternateColorCodes('&',LoreScoreBoard2)).setScore(plugin.getConfig().getInt("Info.material"));
         }
 	}
 }

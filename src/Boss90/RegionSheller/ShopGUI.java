@@ -44,31 +44,25 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String NameApple = plugin.getConfig().getString("GUI.NameApple");
 		
-		NameApple = NameApple.replace("&", "\u00a7");
-		
 		String LoreApple = plugin.getConfig().getString("GUI.LoreApple");
-		
-		LoreApple = LoreApple.replace("&", "\u00a7");
 		
 		ItemStack item = new ItemStack(Material.APPLE, 1);
 		ItemMeta meta = item.getItemMeta();
 		item.setItemMeta(meta);
-		meta.setDisplayName(NameApple);
-		meta.setLore(Lists.newArrayList(LoreApple));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameApple));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreApple + " " + EconomyManager.infoMoney(p))));
 		item.setItemMeta(meta);
 		
 		i.setItem(0, item);
 		p.openInventory(i);
 		
 		String NameBread = plugin.getConfig().getString("GUI.NameBread");
-		NameBread = NameBread.replace("&", "\u00a7");
 		
 		String LoreBread = plugin.getConfig().getString("GUI.LoreBread");
-		LoreBread = LoreBread.replace("&", "\u00a7");
 		
 		ItemStack item1 = new ItemStack(Material.BREAD, 1);
-		meta.setDisplayName(NameBread);
-		meta.setLore(Lists.newArrayList(LoreBread));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameBread));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreBread + " " + EconomyManager.infoMoney(p))));
 		item1.setItemMeta(meta);
 		
 		i.setItem(1, item1);
@@ -76,15 +70,11 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String LorePotato = plugin.getConfig().getString("GUI.LorePotato");
 		
-		LorePotato = LorePotato.replace("&", "\u00a7");
-		
 		String NamePotato = plugin.getConfig().getString("GUI.NamePotato");
 		
-		NamePotato = NamePotato.replace("&", "\u00a7");
-		
 		ItemStack item2 = new ItemStack(Material.BAKED_POTATO, 1);
-		meta.setDisplayName(NamePotato);
-		meta.setLore(Lists.newArrayList(LorePotato));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NamePotato));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LorePotato + " " + EconomyManager.infoMoney(p))));
 		item2.setItemMeta(meta);
 		
 		i.setItem(2, item2);
@@ -92,15 +82,11 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String LoreMilk = plugin.getConfig().getString("GUI.LoreMilk");
 		
-		LoreMilk = LoreMilk.replace("&", "\u00a7");
-		
 		String NameMilk = plugin.getConfig().getString("GUI.NameMilk");
 		
-		NameMilk = NameMilk.replace("&", "\u00a7");
-		
 		ItemStack item3 = new ItemStack(Material.MILK_BUCKET, 1);
-		meta.setDisplayName(NameMilk);
-		meta.setLore(Lists.newArrayList(LoreMilk));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameMilk));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreMilk + " " + EconomyManager.infoMoney(p))));
 		item3.setItemMeta(meta);
 		
 		i.setItem(3, item3);
@@ -108,15 +94,11 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String LoreFishing = plugin.getConfig().getString("GUI.LoreFishing");
 		
-		LoreFishing = LoreFishing.replace("&", "\u00a7");
-		
 		String NameFishing = plugin.getConfig().getString("GUI.NameFishing");
-		
-		NameFishing = NameFishing.replace("&", "\u00a7");
-		
+
 		ItemStack item4 = new ItemStack(Material.FISHING_ROD, 1);
-		meta.setDisplayName(NameFishing);
-		meta.setLore(Lists.newArrayList(LoreFishing));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameFishing));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreFishing + " " + EconomyManager.infoMoney(p))));
 		item4.setItemMeta(meta);
 		
 		i.setItem(4, item4);
@@ -124,15 +106,11 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String LoreBook = plugin.getConfig().getString("GUI.LoreBook");
 		
-		LoreBook = LoreBook.replace("&", "\u00a7");
-		
 		String NameBook = plugin.getConfig().getString("GUI.NameBook");
 		
-		NameBook = NameBook.replace("&", "\u00a7");
-		
 		ItemStack item5 = new ItemStack(Material.BOOK_AND_QUILL, 1);
-		meta.setDisplayName(NameBook);
-		meta.setLore(Lists.newArrayList(LoreBook));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameBook));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreBook + " " + EconomyManager.infoMoney(p))));
 		item5.setItemMeta(meta);
 		
 		i.setItem(5, item5);
@@ -140,15 +118,11 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String LoreClock = plugin.getConfig().getString("GUI.LoreClock");
 		
-		LoreClock = LoreClock.replace("&", "\u00a7");
-		
 		String NameClock = plugin.getConfig().getString("GUI.NameClock");
 		
-		NameClock = NameClock.replace("&", "\u00a7");
-		
 		ItemStack item6 = new ItemStack(Material.WATCH, 1);
-		meta.setDisplayName(NameClock);
-		meta.setLore(Lists.newArrayList(LoreClock));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameClock));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreClock + " " + EconomyManager.infoMoney(p))));
 		item6.setItemMeta(meta);
 		
 		i.setItem(6, item6);
@@ -156,15 +130,11 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String LoreCompass = plugin.getConfig().getString("GUI.LoreCompass");
 		
-		LoreCompass = LoreCompass.replace("&", "\u00a7");
-		
 		String NameCompass = plugin.getConfig().getString("GUI.NameCompass");
 		
-		NameCompass = NameCompass.replace("&", "\u00a7");
-		
 		ItemStack item7 = new ItemStack(Material.COMPASS, 1);
-		meta.setDisplayName(NameCompass);
-		meta.setLore(Lists.newArrayList(LoreCompass));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameCompass));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreCompass + " " + EconomyManager.infoMoney(p))));
 		item7.setItemMeta(meta);
 		
 		i.setItem(7, item7);
@@ -172,29 +142,23 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		String LoreFire = plugin.getConfig().getString("GUI.LoreSteel");
 		
-		LoreFire = LoreFire.replace("&", "\u00a7");
-		
 		String NameFire = plugin.getConfig().getString("GUI.NameSteel");
 		
-		NameFire = NameFire.replace("&", "\u00a7");
-		
 		ItemStack item8 = new ItemStack(Material.FLINT_AND_STEEL, 1);
-		meta.setDisplayName(NameFire);
-		meta.setLore(Lists.newArrayList(LoreFire));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameFire));
+		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreFire)));
 		item8.setItemMeta(meta);
 		
 		i.setItem(8, item8);
 		p.openInventory(i);
 		return true;
 	}
-	@SuppressWarnings("unused")
 	@EventHandler
 	public void handle(InventoryClickEvent e) {
 		String NameGUI = plugin.getConfig().getString("GUI.NameGUI");
-		NameGUI = NameGUI.replace("&", "\u00a7");
 		
 		Inventory i = e.getInventory();
-		if(ChatColor.stripColor(i.getName()).equals(ChatColor.stripColor(NameGUI))) {
+		if(ChatColor.stripColor(i.getName()).equals(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',NameGUI)))) {
 		Inventory c = e.getClickedInventory();
 		try {
 		if(e.getClickedInventory() == null) {
@@ -204,67 +168,44 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		if(c.equals(i)) {
 		
 		String TakeMoneyApple = plugin.getConfig().getString("Messages.BuyAppleMessage");
-		TakeMoneyApple = TakeMoneyApple.replace("&", "\u00a7");
 		
 		String TakeMoneyBread = plugin.getConfig().getString("Messages.BuyBreadMessage");
-		TakeMoneyBread = TakeMoneyBread.replace("&", "\u00a7");
 		
 		String TakeMoneyPotato = plugin.getConfig().getString("Messages.BuyPotatoMessage");
-		TakeMoneyPotato = TakeMoneyPotato.replace("&", "\u00a7");
 		
 		String TakeMoneyMilk = plugin.getConfig().getString("Messages.BuyMilkMessage");
-		TakeMoneyMilk = TakeMoneyMilk.replace("&", "\u00a7");
 		
 		String TakeMoneyFishing = plugin.getConfig().getString("Messages.BuyFishingMessage");
-		TakeMoneyFishing = TakeMoneyFishing.replace("&", "\u00a7");
 		
 		String TakeMoneyBook = plugin.getConfig().getString("Messages.BuyBookMessage");
-		TakeMoneyBook = TakeMoneyBook.replace("&", "\u00a7");
 		
 		String TakeMoneyClock = plugin.getConfig().getString("Messages.BuyClockMessage");
-		TakeMoneyClock = TakeMoneyClock.replace("&", "\u00a7");
 		
 		String TakeMoneyCompass = plugin.getConfig().getString("Messages.BuyCompassMessage");
-		TakeMoneyCompass = TakeMoneyCompass.replace("&", "\u00a7");
 		
 		String TakeMoneyFire = plugin.getConfig().getString("Messages.BuySteelMessage");
-		TakeMoneyFire = TakeMoneyFire.replace("&", "\u00a7");
 		
 		String TakeMoneyNullApple = plugin.getConfig().getString("Messages.InsufficientFundsAppleMessage");
-		TakeMoneyNullApple = TakeMoneyNullApple.replace("&", "\u00a7");
 		
 		String TakeMoneyNullBread = plugin.getConfig().getString("Messages.InsufficientFundsBreadMessage");
-		TakeMoneyNullBread = TakeMoneyNullBread.replace("&", "\u00a7");
 		
 		String TakeMoneyNullPotato = plugin.getConfig().getString("Messages.InsufficientFundsPotatoMessage");
-		TakeMoneyNullPotato = TakeMoneyNullPotato.replace("&", "\u00a7");
 		
 		String TakeMoneyNullMilk = plugin.getConfig().getString("Messages.InsufficientFundsMilkMessage");
-		TakeMoneyNullMilk = TakeMoneyNullMilk.replace("&", "\u00a7");
 		
 		String TakeMoneyNullFishing = plugin.getConfig().getString("Messages.InsufficientFundsFishingMessage");
-		TakeMoneyNullFishing = TakeMoneyNullFishing.replace("&", "\u00a7");
 		
 		String TakeMoneyNullBook = plugin.getConfig().getString("Messages.InsufficientFundsBookMessage");
-		TakeMoneyNullBook = TakeMoneyNullBook.replace("&", "\u00a7");
 		
 		String TakeMoneyNullClock = plugin.getConfig().getString("Messages.InsufficientFundsClockMessage");
-		TakeMoneyNullClock = TakeMoneyNullClock.replace("&", "\u00a7");
 		
 		String TakeMoneyNullCompass = plugin.getConfig().getString("Messages.InsufficientFundsCompassMessage");
-		TakeMoneyNullCompass = TakeMoneyNullCompass.replace("&", "\u00a7");
 		
 		String TakeMoneyNullFire = plugin.getConfig().getString("Messages.InsufficientFundsSteelMessage");
-		TakeMoneyNullFire = TakeMoneyNullFire.replace("&", "\u00a7");
 		
 		String Prefix = plugin.getConfig().getString("Messages.Prefix");
-		Prefix = Prefix.replace("&", "\u00a7");
-		
-		String Owner = plugin.getConfig().getString("Messages.BuyOwnerShopGUI");
-		Owner = Owner.replace("&", "\u00a7");
 		
 		String NullMaterial = plugin.getConfig().getString("Messages.NullMaterial");
-		NullMaterial = NullMaterial.replace("&", "\u00a7");
 		
 		int MaterialBusiness = plugin.getConfig().getInt("Info.material");
 		
@@ -307,42 +248,45 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		int NumberFireGive = plugin.getConfig().getInt("NumberGive.NumberSteelGive");
 
 		Player player = (Player) e.getWhoClicked();
-        LocalTime time = LocalTime.now();
         Player player2 = (Player) Bukkit.getPlayer(plugin.getConfig().getString("Info.owner"));
 
 			if(e.getSlot() <= 9) e.setCancelled(true);
 				if(e.getSlot() == 0) {
 				if(!EconomyManager.takeMoney(player, priceApple)) {
-					player.sendMessage(Prefix + " " + TakeMoneyNullApple);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullApple));
 					return;
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money2 = money += priceApple;
 				int MaterialData = MaterialBusiness -= materialtake;
                 if(MaterialBusiness <= -1) {
-                	player.sendMessage(Prefix + " " + NullMaterial);
+                	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
                 }
 				this.plugin.getConfig().set("Info.money", money2);
 				this.plugin.getConfig().set("Info.material", MaterialData);
+				GLClass.getData().set("Info.24", money2);
+				GLClass.saveData();
                 updateScoreboard(player2);
 				GLClass.getInsance().saveConfig();
                 List<String> list = GLClass.getLog().getStringList("logs");
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy apple " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
-				player.sendMessage(Prefix + " " + TakeMoneyApple); player.getInventory().addItem(new ItemStack(Material.APPLE, NumberAppleGive));
+				player.sendMessage(ChatColor.translateAlternateColorCodes('&', Prefix + " " + TakeMoneyApple)); player.getInventory().addItem(new ItemStack(Material.APPLE, NumberAppleGive));
 				}
 			if(e.getSlot() == 1) {
 				if(!EconomyManager.takeMoney(player, priceBread)) {
-					player.sendMessage(Prefix + " " + TakeMoneyNullBread);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullBread));
 					return;
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money3 = money += priceBread;
 				int MaterialData = MaterialBusiness -= materialtake;
+				GLClass.getData().set("Info.24", money3);
+				GLClass.saveData();
                 if(MaterialBusiness <= -1) {
-                	player.sendMessage(Prefix + " " + NullMaterial);
+                	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
                 }
 				this.plugin.getConfig().set("Info.money", money3);
@@ -353,19 +297,21 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy bread " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
-			player.sendMessage(Prefix + " " + TakeMoneyBread); player.getInventory().addItem(new ItemStack(Material.BREAD, NumberBreadGive));
+			player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyBread)); player.getInventory().addItem(new ItemStack(Material.BREAD, NumberBreadGive));
 			}
 			
 			if(e.getSlot() == 2) {
 				if(!EconomyManager.takeMoney(player, pricePotato)) {
-					player.sendMessage(Prefix + " " + TakeMoneyNullPotato);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullPotato));
 					return;
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money4 = money += pricePotato;
 				int MaterialData = MaterialBusiness -= materialtake;
+				GLClass.getData().set("Info.24", money4);
+				GLClass.saveData();
                 if(MaterialBusiness <= -1) {
-                	player.sendMessage(Prefix + " " + NullMaterial);
+                	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
                 }
 				this.plugin.getConfig().set("Info.money", money4);
@@ -376,19 +322,21 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy potato" + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
-			player.sendMessage(Prefix + " " + TakeMoneyPotato); player.getInventory().addItem(new ItemStack(Material.BAKED_POTATO, NumberPotatoGive));
+			player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyPotato)); player.getInventory().addItem(new ItemStack(Material.BAKED_POTATO, NumberPotatoGive));
 			}
 			
 			if(e.getSlot() == 3) {
 				if(!EconomyManager.takeMoney(player, priceMilk)) {
-					player.sendMessage(Prefix + " " + TakeMoneyNullMilk);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullMilk));
 					return;
 				}
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money5 = money += priceMilk;
 				int MaterialData = MaterialBusiness -= materialtake;
+				GLClass.getData().set("Info.24", money5);
+				GLClass.saveData();
                 if(MaterialBusiness <= -1) {
-                	player.sendMessage(Prefix + " " + NullMaterial);
+                	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
                 }
 				this.plugin.getConfig().set("Info.money", money5);
@@ -399,7 +347,7 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy milk " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
-			player.sendMessage(Prefix + " " + TakeMoneyMilk); player.getInventory().addItem(new ItemStack(Material.MILK_BUCKET, NumberMilkGive));
+			player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyMilk)); player.getInventory().addItem(new ItemStack(Material.MILK_BUCKET, NumberMilkGive));
 			}
 			
 			if(e.getSlot() == 4) {
@@ -410,8 +358,10 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				int money = this.plugin.getConfig().getInt("Info.money");
 				int money7 = money += priceFishing;
 				int MaterialData = MaterialBusiness -= materialtake;
+				GLClass.getData().set("Info.24", money7);
+				GLClass.saveData();
                 if(MaterialBusiness <= -1) {
-                	player.sendMessage(Prefix + " " + NullMaterial);
+                	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
                 }
 				this.plugin.getConfig().set("Info.money", money7);
@@ -422,18 +372,20 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy Fishing rod " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
-			    player.sendMessage(Prefix + " " + TakeMoneyFishing); player.getInventory().addItem(new ItemStack(Material.FISHING_ROD, NumberFishingGive));
+			    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyFishing)); player.getInventory().addItem(new ItemStack(Material.FISHING_ROD, NumberFishingGive));
 			}
 				if(e.getSlot() == 5) {
 					if(!EconomyManager.takeMoney(player, priceBook)) {
-						player.sendMessage(Prefix + " " + TakeMoneyNullBook);
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullBook));
 						return;
 					}
 					int money = this.plugin.getConfig().getInt("Info.money");
 					int money8 = money += priceBook;
 					int MaterialData = MaterialBusiness -= materialtake;
+					GLClass.getData().set("Info.24", money8);
+					GLClass.saveData();
 	                if(MaterialBusiness <= -1) {
-	                	player.sendMessage(Prefix + " " + NullMaterial);
+	                	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
 	                	return;
 	                }
 					this.plugin.getConfig().set("Info.money", money8);
@@ -444,18 +396,20 @@ private Map<Player, Inventory> holders = new HashMap<>();
 	                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy book " + "total material: " + MaterialBusiness);
 	                GLClass.getLog().set("logs", list);
 	                GLClass.saveLog();
-				    player.sendMessage(Prefix + " " + TakeMoneyBook); player.getInventory().addItem(new ItemStack(Material.BOOK_AND_QUILL, NumberBookGive));
+				    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyBook)); player.getInventory().addItem(new ItemStack(Material.BOOK_AND_QUILL, NumberBookGive));
 			}
 				if(e.getSlot() == 6) {
 					if(!EconomyManager.takeMoney(player, priceClock)) {
-						player.sendMessage(Prefix + " " + TakeMoneyNullClock);
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullClock));
 						return;
 					}
 			int money = this.plugin.getConfig().getInt("Info.money");
 			int money9 = money += priceClock;
 			int MaterialData = MaterialBusiness -= materialtake;
+			GLClass.getData().set("Info.24", money9);
+			GLClass.saveData();
             if(MaterialBusiness <= -1) {
-            	player.sendMessage(Prefix + " " + NullMaterial);
+            	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
             	return;
             }
 			this.plugin.getConfig().set("Info.money", money9);
@@ -466,19 +420,21 @@ private Map<Player, Inventory> holders = new HashMap<>();
             list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy clock " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
-		    player.sendMessage(Prefix + " " + TakeMoneyClock); player.getInventory().addItem(new ItemStack(Material.WATCH, NumberClockGive));
+		    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyClock)); player.getInventory().addItem(new ItemStack(Material.WATCH, NumberClockGive));
 			}
 				if(e.getSlot() == 7) {
 					if(!EconomyManager.takeMoney(player, priceCompass)) {
-						player.sendMessage(Prefix + " " + TakeMoneyNullCompass);
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullCompass));
 						return;
 					}
 			int money = this.plugin.getConfig().getInt("Info.money");
 			int MaterialData = MaterialBusiness -= materialtake;
 			this.plugin.getConfig().set("Info.material", MaterialData);
 			int money10 = money += priceCompass;
+			GLClass.getData().set("Info.24", money10);
+			GLClass.saveData();
             if(MaterialBusiness <= -1) {
-            	player.sendMessage(Prefix + " " + NullMaterial);
+            	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
             	return;
             }
 			this.plugin.getConfig().set("Info.money", money10);
@@ -488,19 +444,21 @@ private Map<Player, Inventory> holders = new HashMap<>();
             list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy compass " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
-		    player.sendMessage(Prefix + " " + TakeMoneyCompass); player.getInventory().addItem(new ItemStack(Material.COMPASS, NumberCompassGive));
+		    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyCompass)); player.getInventory().addItem(new ItemStack(Material.COMPASS, NumberCompassGive));
 			}
 				if(e.getSlot() == 8) {
 					if(!EconomyManager.takeMoney(player, priceFire)) {
-						player.sendMessage(Prefix + " " + TakeMoneyNullFire);
+						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullFire));
 						return;
 					}
 					int MaterialData = MaterialBusiness -= materialtake;
 			int money = this.plugin.getConfig().getInt("Info.money");
 			this.plugin.getConfig().set("Info.material", MaterialData);
 			int money11 = money += priceFire;
+			GLClass.getData().set("Info.24", money11);
+			GLClass.saveData();
             if(MaterialBusiness <= -1) {
-            	player.sendMessage(Prefix + " " + NullMaterial);
+            	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
             	return;
             }
 			this.plugin.getConfig().set("Info.money", money11);
@@ -510,7 +468,7 @@ private Map<Player, Inventory> holders = new HashMap<>();
             list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy flint and steel " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
-		    player.sendMessage(Prefix + " " + TakeMoneyFire); player.getInventory().addItem(new ItemStack(Material.FLINT_AND_STEEL, NumberFireGive));
+		    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyFire)); player.getInventory().addItem(new ItemStack(Material.FLINT_AND_STEEL, NumberFireGive));
 				}
 		}
 	}

@@ -5,7 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 public class ReloadPlugin implements Listener, CommandExecutor{
 	private GLClass plugin;
 

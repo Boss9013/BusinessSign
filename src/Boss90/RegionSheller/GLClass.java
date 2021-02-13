@@ -52,25 +52,25 @@ public class GLClass extends JavaPlugin implements Listener{
 	log = YamlConfiguration.loadConfiguration(logfile);
 	EconomyManager.init();
 	getCommand("shopGUI").setExecutor(new ShopGUI(this));
-	getCommand("sbalance").setExecutor(new BalanceBusiness(this));
+	getCommand("sbalance").setExecutor(new BalanceBusinesss(this));
 	getCommand("stakebalance").setExecutor(new BalanceBusinessTake(this));
 	getCommand("shelp").setExecutor(new HelpToPlugin(this));
 	getCommand("sremoveowner").setExecutor(new removeOwner(this));
 	getCommand("swipebusiness").setExecutor(new wipebusiness(this));
 	getCommand("sreload").setExecutor(new ReloadPlugin(this));
 	getCommand("smaterial").setExecutor(new TakeMaterialBalance(this));
+	getCommand("saddstaff").setExecutor(new Staff(this));
+	getCommand("sremovestaff").setExecutor(new RemoveStaff(this));
+	getCommand("sstartvote").setExecutor(new VoteStart(this));
+	getCommand("svote").setExecutor(new Vote(this));
+	getCommand("sstopvote").setExecutor(new VoteStop(this));
+	getCommand("ssetowner").setExecutor(new SetOwner(this));
 	Bukkit.getPluginManager().registerEvents(new SingHandler(this), this);
-	Bukkit.getPluginManager().registerEvents(new EconomyManager(), this);
 	Bukkit.getPluginManager().registerEvents(new ShopGUI(this), this);
-	Bukkit.getPluginManager().registerEvents(new BalanceBusiness(this), this);
-	Bukkit.getPluginManager().registerEvents(new BalanceBusinessTake(this), this);
 	Bukkit.getPluginManager().registerEvents(new HelpToPlugin(this), this);
 	Bukkit.getPluginManager().registerEvents(new Join(this), this);
-	Bukkit.getPluginManager().registerEvents(new removeOwner(this), this);
-	Bukkit.getPluginManager().registerEvents(new wipebusiness(this), this);
 	Bukkit.getPluginManager().registerEvents(new ScoreBoard(this), this);
 	Bukkit.getPluginManager().registerEvents(new TakeMaterialBalance(this), this);
-	Bukkit.getPluginManager().registerEvents(new Taxes(this), this);
 	if (Bukkit.getServer().getPluginManager().getPlugin("WorldGuard") == null ) {
 			this.getLogger().info("[ERROR] First install the WorldGuard plugin");
 	}
@@ -78,6 +78,10 @@ public class GLClass extends JavaPlugin implements Listener{
 				this.getLogger().info("[ERROR] First install the Vault plugin");
 	}
 	setupChat();
+	getLogger().info("BusinessSign enable.");
+		}
+		public void onDisable() {
+			getLogger().info("BusinessSign disable.");
 		}
 		public static GLClass getInsance() {
 			return instance;
