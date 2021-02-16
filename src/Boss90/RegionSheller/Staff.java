@@ -1,7 +1,5 @@
 package Boss90.RegionSheller;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -19,7 +17,6 @@ public class Staff implements Listener, CommandExecutor{
 	}
 		@Override
 	    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {	 
-			{
 		   		 Player player = (Player) sender;
 		    	if(this.plugin.getConfig().getString("Info.owner").contains(player.getName())) {
 				if(args.length == 0) {
@@ -27,8 +24,7 @@ public class Staff implements Listener, CommandExecutor{
 	    			String RemoveStaff = plugin.getConfig().getString("Messages.StaffNullMessage");
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + RemoveStaff));
 					return true;
-				}
-			Player player1 = (Player) sender;
+				} Player player1 = (Player) sender;
 	    			if(!plugin.getConfig().getStringList("Staff").contains(args[0])) {
 	                    List<String> players = plugin.getConfig().getStringList("Staff");
 		    			String Prefix = plugin.getConfig().getString("Messages.Prefix");
@@ -37,10 +33,7 @@ public class Staff implements Listener, CommandExecutor{
 	                    plugin.getConfig().set("Staff", players);
 	                    player1.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + AddStaff));
 	                    plugin.saveConfig();
-	    	            List<String> list = GLClass.getLog().getStringList("logs");
-	    	            list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + player1.getName() + " add staff player: " + args[0]);
-	    	            GLClass.getLog().set("logs", list);
-	    	            GLClass.saveLog();
+	                    Methods.Log(player.getName(), " add staff player: " + args[0]);
 	    			} else {
 		    			String Prefix = plugin.getConfig().getString("Messages.Prefix");
 		    			
@@ -54,8 +47,6 @@ public class Staff implements Listener, CommandExecutor{
 	    			String Error = plugin.getConfig().getString("Messages.Error");
 	    			player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + Error));
 	    			return true;
-	    		}
-				return true;
+	    		}  return true;
 		}
-	}
 }

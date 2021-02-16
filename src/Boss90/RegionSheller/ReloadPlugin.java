@@ -16,8 +16,7 @@ public class ReloadPlugin implements Listener, CommandExecutor{
    	 if(!sender.hasPermission("Business.removeOwner")) {
    		 sender.sendMessage("§cУ вас нету прав!");
    		 return true;			 
-   	 }
-     Bukkit.getPluginManager().disablePlugin(GLClass.getInsance());
+   } Bukkit.getPluginManager().disablePlugin(GLClass.getInsance());
      plugin.reloadConfig();
      Bukkit.getPluginManager().enablePlugin(GLClass.getInsance());
      sender.sendMessage("Plugin is succes reload.");

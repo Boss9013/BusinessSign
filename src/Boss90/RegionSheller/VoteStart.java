@@ -1,9 +1,5 @@
 package Boss90.RegionSheller;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -46,10 +42,7 @@ public class VoteStart implements CommandExecutor, Listener {
    		 p.sendMessage(Prefix + " You sucess start vote.");
    		 plugin.saveConfig();
    		 Bukkit.broadcastMessage(Start);
-         List<String> list = GLClass.getLog().getStringList("logs");
-         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " started voting, condidate: " + args[0] + ", " + args[1] + ", " + args[2]);
-         GLClass.getLog().set("logs", list);
-         GLClass.saveLog();
+   		 Methods.Log(p.getName(), " started voting, condidate: " + args[0] + ", " + args[1] + ", " + args[2]);
 		return true;
    	 }
 }

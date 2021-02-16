@@ -15,7 +15,6 @@ public class Join implements Listener{
 	public Join(GLClass plugin) {
 	this.plugin = plugin;
 	}
-	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event) {
 		  Player player = (Player) event.getPlayer();
 	 		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName()) || this.plugin.getConfig().getStringList("Staff").contains(player.getName())) {
@@ -23,16 +22,14 @@ public class Join implements Listener{
 	   			JoinMessage = JoinMessage.replace("%player%", event.getPlayer().getName());
 	   			if(plugin.chat == null) {
 	   				return;
-	   			}
-	   			JoinMessage = JoinMessage.replace("%suffix%", this.plugin.chat.getPlayerPrefix(player));
+	   		 }  JoinMessage = JoinMessage.replace("%suffix%", this.plugin.chat.getPlayerPrefix(player));
 	   			JoinMessage = JoinMessage.replace("%prefix%", this.plugin.chat.getPlayerPrefix(player));
 	   			if (!plugin.getConfig().getBoolean("JoinAndQuit.Join"))
 	   				return;
       Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',JoinMessage));
       return;
 	   		}
-	}
-			@EventHandler
+	}	 @EventHandler
     		public void onPlayerQuitEvent(PlayerQuitEvent event) {
     			  Player player = (Player) event.getPlayer();
     		 		if(this.plugin.getConfig().getString("Info.owner").contains(player.getName()) || this.plugin.getConfig().getStringList("Staff").contains(player.getName())) {
@@ -48,8 +45,7 @@ public class Join implements Listener{
     	      Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',QuitMessage));
     	      return;
     			  }
-    		}
-    		@SuppressWarnings("unused")
+    	  } @SuppressWarnings("unused")
 			@EventHandler
     		public void onPlayerJoinEvent1(PlayerJoinEvent event) {
   			    Player player = (Player) event.getPlayer();

@@ -17,7 +17,6 @@ this.plugin = plugin;
    		 sender.sendMessage("§cError");
    		 return true;			 
    	 }
-   	 {
    		 String prefixsign = plugin.getConfig().getString("Sign.Prefix");
    		 sender.sendMessage("§dHelp:");
    		 sender.sendMessage("To create a business, you need to enter: §3" + prefixsign +  "§f, in the first line of the table, then the region and the cost of the business.");
@@ -31,6 +30,5 @@ this.plugin = plugin;
    		 sender.sendMessage("§4WARNING:");
    		 sender.sendMessage("§cOnly 1 business can be put up for sale. 2 or more businesses can lead to a bug.");
    		 return true;
-   	 }
 	}
 }

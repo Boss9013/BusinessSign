@@ -27,7 +27,6 @@ this.plugin = plugin;
     			String Error = plugin.getConfig().getString("Messages.Error");
     			player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + Error));
     			return true;
-    		}
-			return true;
+    		}return true;
 	}
 }

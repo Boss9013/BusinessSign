@@ -1,9 +1,5 @@
 package Boss90.RegionSheller;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,10 +29,7 @@ public class SetOwner implements CommandExecutor, Listener {
 		 this.plugin.getConfig().set("Info.owner", args[0]);
 		 GLClass.getInsance().saveConfig();
 		 p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + "You set the business owner: " + args[0]));
-         List<String> list = GLClass.getLog().getStringList("logs");
-         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " set owner: " + args[0]);
-         GLClass.getLog().set("logs", list);
-         GLClass.saveLog();
+		 Methods.Log(p.getName(), " set owner: " + args[0]);
    	 }
    	 return true;
 	}

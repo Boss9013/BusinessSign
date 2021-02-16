@@ -25,8 +25,7 @@ public class SingHandler implements Listener {
 
 	public SingHandler(GLClass plugin) {
 	this.plugin = plugin;
-	}
-	public static Player player;
+  } public static Player player;
 
 	@EventHandler
 	public void create(SignChangeEvent e) {
@@ -41,19 +40,14 @@ public class SingHandler implements Listener {
 		String name;
 		double amount;
 		name = e.getLine(1);
-		try {
-			amount = Double.parseDouble(e.getLine(2));
+		try { amount = Double.parseDouble(e.getLine(2));
 		}   catch (NumberFormatException el) {
 			e.setLine(3, ChatColor.translateAlternateColorCodes('&',InvalidPrice));
 			return;
-		}
-		
-		if(amount < 0) {
+	 } if(amount < 0) {
 			e.setLine(3, ChatColor.translateAlternateColorCodes('&',InvalidPrice));
 			return;
-		}
-		
-		String key = locToString(e.getBlock().getLocation());
+	  } String key = locToString(e.getBlock().getLocation());
 		GLClass.getData().set(key + ".region", name);
 		GLClass.getData().set(key + ".price", amount);
 		GLClass.saveData();
@@ -67,8 +61,7 @@ public class SingHandler implements Listener {
         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " creating business " + b.getX() + " " + b.getY() + " " + b.getZ());
         GLClass.getLog().set("logs", list);
         GLClass.saveLog();
-	}
-	@EventHandler
+  } @EventHandler
 	public void onBreak(BlockBreakEvent e) {
 		Player p = e.getPlayer();
 		if(!p.hasPermission("Business.DeleteBusiness")) return;
@@ -86,8 +79,7 @@ public class SingHandler implements Listener {
 	        GLClass.getLog().set("logs", list);
 	        GLClass.saveLog();
 		}
-	}
-	@EventHandler
+  }@EventHandler
 	public void click(PlayerInteractEvent e) {
 		if(e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 		Material t = e.getClickedBlock().getType();
@@ -117,18 +109,13 @@ public class SingHandler implements Listener {
 		if(region == null) {
 			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullRegion));
 			return;
-		}
-		
-		if(region.getOwners().size() > 0 || region.getMembers().size() > 0) {
+		}		if(region.getOwners().size() > 0 || region.getMembers().size() > 0) {
 			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + BusinessErrorBuy));
 			return;
-		}
-		
-		if(!EconomyManager.takeMoney(p, price)) {
+		}	if(!EconomyManager.takeMoney(p, price)) {
 			p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + Invalid));
 			return;
-		}
-		String SucessBusinessBuy = plugin.getConfig().getString("Sign.MessageBusinessBuy");
+		}		String SucessBusinessBuy = plugin.getConfig().getString("Sign.MessageBusinessBuy");
 		
 		String ThreeLine = plugin.getConfig().getString("Sign.ThirdLine");
 		
@@ -153,9 +140,7 @@ public class SingHandler implements Listener {
         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " buy business");
         GLClass.getLog().set("logs", list);
         GLClass.saveLog();
-	}
-	
-	public String locToString(Location loc) {
+	}	public String locToString(Location loc) {
 		return loc.getWorld().getName() + "_" + loc.getBlockX() + "_" + loc.getBlockY() + "_" + loc.getBlockZ();
 	}
 }

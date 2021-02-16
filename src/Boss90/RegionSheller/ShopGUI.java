@@ -18,10 +18,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-
-import com.google.common.collect.Lists;
 
 public class ShopGUI implements Listener, CommandExecutor {
 private GLClass plugin;
@@ -48,123 +44,85 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		
 		ItemStack item = new ItemStack(Material.APPLE, 1);
 		ItemMeta meta = item.getItemMeta();
-		item.setItemMeta(meta);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameApple));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreApple + " " + EconomyManager.infoMoney(p))));
-		item.setItemMeta(meta);
 		
-		i.setItem(0, item);
-		p.openInventory(i);
+		Methods.SetItem(NameApple, LoreApple, p, item, 0, i, meta);
 		
 		String NameBread = plugin.getConfig().getString("GUI.NameBread");
 		
 		String LoreBread = plugin.getConfig().getString("GUI.LoreBread");
 		
 		ItemStack item1 = new ItemStack(Material.BREAD, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameBread));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreBread + " " + EconomyManager.infoMoney(p))));
-		item1.setItemMeta(meta);
 		
-		i.setItem(1, item1);
-		p.openInventory(i);
+		Methods.SetItem(NameBread, LoreBread, p, item1, 1, i, meta);
 		
 		String LorePotato = plugin.getConfig().getString("GUI.LorePotato");
 		
 		String NamePotato = plugin.getConfig().getString("GUI.NamePotato");
 		
 		ItemStack item2 = new ItemStack(Material.BAKED_POTATO, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NamePotato));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LorePotato + " " + EconomyManager.infoMoney(p))));
-		item2.setItemMeta(meta);
 		
-		i.setItem(2, item2);
-		p.openInventory(i);
+		Methods.SetItem(NamePotato, LorePotato, p, item2, 2, i, meta);
 		
 		String LoreMilk = plugin.getConfig().getString("GUI.LoreMilk");
 		
 		String NameMilk = plugin.getConfig().getString("GUI.NameMilk");
 		
 		ItemStack item3 = new ItemStack(Material.MILK_BUCKET, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameMilk));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreMilk + " " + EconomyManager.infoMoney(p))));
-		item3.setItemMeta(meta);
 		
-		i.setItem(3, item3);
-		p.openInventory(i);
+		Methods.SetItem(NameMilk, LoreMilk, p, item3, 3, i, meta);
 		
 		String LoreFishing = plugin.getConfig().getString("GUI.LoreFishing");
 		
 		String NameFishing = plugin.getConfig().getString("GUI.NameFishing");
 
 		ItemStack item4 = new ItemStack(Material.FISHING_ROD, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameFishing));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreFishing + " " + EconomyManager.infoMoney(p))));
-		item4.setItemMeta(meta);
 		
-		i.setItem(4, item4);
-		p.openInventory(i);
+		Methods.SetItem(NameFishing, LoreFishing, p, item4, 4, i, meta);
 		
 		String LoreBook = plugin.getConfig().getString("GUI.LoreBook");
 		
 		String NameBook = plugin.getConfig().getString("GUI.NameBook");
 		
 		ItemStack item5 = new ItemStack(Material.BOOK_AND_QUILL, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameBook));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreBook + " " + EconomyManager.infoMoney(p))));
-		item5.setItemMeta(meta);
 		
-		i.setItem(5, item5);
-		p.openInventory(i);
+		Methods.SetItem(NameBook, LoreBook, p, item5, 5, i, meta);
 		
 		String LoreClock = plugin.getConfig().getString("GUI.LoreClock");
 		
 		String NameClock = plugin.getConfig().getString("GUI.NameClock");
 		
 		ItemStack item6 = new ItemStack(Material.WATCH, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameClock));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreClock + " " + EconomyManager.infoMoney(p))));
-		item6.setItemMeta(meta);
 		
-		i.setItem(6, item6);
-		p.openInventory(i);
+		Methods.SetItem(NameClock, LoreClock, p, item6, 6, i, meta);
 		
 		String LoreCompass = plugin.getConfig().getString("GUI.LoreCompass");
 		
 		String NameCompass = plugin.getConfig().getString("GUI.NameCompass");
 		
 		ItemStack item7 = new ItemStack(Material.COMPASS, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameCompass));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreCompass + " " + EconomyManager.infoMoney(p))));
-		item7.setItemMeta(meta);
 		
-		i.setItem(7, item7);
-		p.openInventory(i);
+		Methods.SetItem(NameCompass, LoreCompass, p, item7, 7, i, meta);
 		
 		String LoreFire = plugin.getConfig().getString("GUI.LoreSteel");
 		
 		String NameFire = plugin.getConfig().getString("GUI.NameSteel");
 		
 		ItemStack item8 = new ItemStack(Material.FLINT_AND_STEEL, 1);
-		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',NameFire));
-		meta.setLore(Lists.newArrayList(ChatColor.translateAlternateColorCodes('&',LoreFire)));
-		item8.setItemMeta(meta);
 		
-		i.setItem(8, item8);
-		p.openInventory(i);
+		Methods.SetItem(NameFire, LoreFire, p, item8, 8, i, meta);
+		
 		return true;
 	}
 	@EventHandler
-	public void handle(InventoryClickEvent e) {
+	public void handle(InventoryClickEvent e) throws NullPointerException {
 		String NameGUI = plugin.getConfig().getString("GUI.NameGUI");
 		
 		Inventory i = e.getInventory();
 		if(ChatColor.stripColor(i.getName()).equals(ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&',NameGUI)))) {
 		Inventory c = e.getClickedInventory();
-		try {
 		if(e.getClickedInventory() == null) {
 		return;
 		}
-		}catch (NullPointerException ignored) {}
 		if(c.equals(i)) {
 		
 		String TakeMoneyApple = plugin.getConfig().getString("Messages.BuyAppleMessage");
@@ -206,6 +164,10 @@ private Map<Player, Inventory> holders = new HashMap<>();
 		String Prefix = plugin.getConfig().getString("Messages.Prefix");
 		
 		String NullMaterial = plugin.getConfig().getString("Messages.NullMaterial");
+		
+		String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
+		
+		String LoreScoreBoard1 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard");
 		
 		int MaterialBusiness = plugin.getConfig().getInt("Info.material");
 		
@@ -262,25 +224,22 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 if(MaterialBusiness <= -1) {
                 	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
-                }
-				this.plugin.getConfig().set("Info.money", money2);
+              } this.plugin.getConfig().set("Info.money", money2);
 				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getData().set("Info.24", money2);
 				GLClass.saveData();
-                updateScoreboard(player2);
+	            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
 				GLClass.getInsance().saveConfig();
                 List<String> list = GLClass.getLog().getStringList("logs");
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy apple " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 				player.sendMessage(ChatColor.translateAlternateColorCodes('&', Prefix + " " + TakeMoneyApple)); player.getInventory().addItem(new ItemStack(Material.APPLE, NumberAppleGive));
-				}
-			if(e.getSlot() == 1) {
+			  } if(e.getSlot() == 1) {
 				if(!EconomyManager.takeMoney(player, priceBread)) {
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullBread));
 					return;
-				}
-				int money = this.plugin.getConfig().getInt("Info.money");
+			  } int money = this.plugin.getConfig().getInt("Info.money");
 				int money3 = money += priceBread;
 				int MaterialData = MaterialBusiness -= materialtake;
 				GLClass.getData().set("Info.24", money3);
@@ -288,11 +247,10 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 if(MaterialBusiness <= -1) {
                 	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
-                }
-				this.plugin.getConfig().set("Info.money", money3);
+              } this.plugin.getConfig().set("Info.money", money3);
 				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
-                updateScoreboard(player2);
+	            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
                 List<String> list = GLClass.getLog().getStringList("logs");
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy bread " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
@@ -304,8 +262,7 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				if(!EconomyManager.takeMoney(player, pricePotato)) {
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullPotato));
 					return;
-				}
-				int money = this.plugin.getConfig().getInt("Info.money");
+			  } int money = this.plugin.getConfig().getInt("Info.money");
 				int money4 = money += pricePotato;
 				int MaterialData = MaterialBusiness -= materialtake;
 				GLClass.getData().set("Info.24", money4);
@@ -313,11 +270,10 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 if(MaterialBusiness <= -1) {
                 	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
-                }
-				this.plugin.getConfig().set("Info.money", money4);
+                } this.plugin.getConfig().set("Info.money", money4);
 				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
-                updateScoreboard(player2);
+	            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
                 List<String> list = GLClass.getLog().getStringList("logs");
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy potato" + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
@@ -329,8 +285,7 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				if(!EconomyManager.takeMoney(player, priceMilk)) {
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullMilk));
 					return;
-				}
-				int money = this.plugin.getConfig().getInt("Info.money");
+			  } int money = this.plugin.getConfig().getInt("Info.money");
 				int money5 = money += priceMilk;
 				int MaterialData = MaterialBusiness -= materialtake;
 				GLClass.getData().set("Info.24", money5);
@@ -338,24 +293,20 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 if(MaterialBusiness <= -1) {
                 	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
-                }
-				this.plugin.getConfig().set("Info.money", money5);
+              } this.plugin.getConfig().set("Info.money", money5);
 				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
-                updateScoreboard(player2);
+	            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
                 List<String> list = GLClass.getLog().getStringList("logs");
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy milk " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 			player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyMilk)); player.getInventory().addItem(new ItemStack(Material.MILK_BUCKET, NumberMilkGive));
-			}
-			
-			if(e.getSlot() == 4) {
+			} if(e.getSlot() == 4) {
 				if(!EconomyManager.takeMoney(player, priceFishing)) {
-					player.sendMessage(Prefix + " " + TakeMoneyNullFishing);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullFishing));
 					return;
-				}
-				int money = this.plugin.getConfig().getInt("Info.money");
+			  } int money = this.plugin.getConfig().getInt("Info.money");
 				int money7 = money += priceFishing;
 				int MaterialData = MaterialBusiness -= materialtake;
 				GLClass.getData().set("Info.24", money7);
@@ -363,18 +314,16 @@ private Map<Player, Inventory> holders = new HashMap<>();
                 if(MaterialBusiness <= -1) {
                 	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
                 	return;
-                }
-				this.plugin.getConfig().set("Info.money", money7);
+              } this.plugin.getConfig().set("Info.money", money7);
 				this.plugin.getConfig().set("Info.material", MaterialData);
 				GLClass.getInsance().saveConfig();
-                updateScoreboard(player2);
+	            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
                 List<String> list = GLClass.getLog().getStringList("logs");
                 list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy Fishing rod " + "total material: " + MaterialBusiness);
                 GLClass.getLog().set("logs", list);
                 GLClass.saveLog();
 			    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyFishing)); player.getInventory().addItem(new ItemStack(Material.FISHING_ROD, NumberFishingGive));
-			}
-				if(e.getSlot() == 5) {
+			}		if(e.getSlot() == 5) {
 					if(!EconomyManager.takeMoney(player, priceBook)) {
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullBook));
 						return;
@@ -387,11 +336,10 @@ private Map<Player, Inventory> holders = new HashMap<>();
 	                if(MaterialBusiness <= -1) {
 	                	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
 	                	return;
-	                }
-					this.plugin.getConfig().set("Info.money", money8);
+	              } this.plugin.getConfig().set("Info.money", money8);
 					this.plugin.getConfig().set("Info.material", MaterialData);
 					GLClass.getInsance().saveConfig();
-	                updateScoreboard(player2);
+		            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
 	                List<String> list = GLClass.getLog().getStringList("logs");
 	                list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy book " + "total material: " + MaterialBusiness);
 	                GLClass.getLog().set("logs", list);
@@ -402,8 +350,7 @@ private Map<Player, Inventory> holders = new HashMap<>();
 					if(!EconomyManager.takeMoney(player, priceClock)) {
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullClock));
 						return;
-					}
-			int money = this.plugin.getConfig().getInt("Info.money");
+					}			int money = this.plugin.getConfig().getInt("Info.money");
 			int money9 = money += priceClock;
 			int MaterialData = MaterialBusiness -= materialtake;
 			GLClass.getData().set("Info.24", money9);
@@ -411,23 +358,20 @@ private Map<Player, Inventory> holders = new HashMap<>();
             if(MaterialBusiness <= -1) {
             	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
             	return;
-            }
-			this.plugin.getConfig().set("Info.money", money9);
+            }			this.plugin.getConfig().set("Info.money", money9);
 			this.plugin.getConfig().set("Info.material", MaterialData);
 			GLClass.getInsance().saveConfig();
-            updateScoreboard(player2);
+            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
             List<String> list = GLClass.getLog().getStringList("logs");
             list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy clock " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
 		    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyClock)); player.getInventory().addItem(new ItemStack(Material.WATCH, NumberClockGive));
-			}
-				if(e.getSlot() == 7) {
+			}	if(e.getSlot() == 7) {
 					if(!EconomyManager.takeMoney(player, priceCompass)) {
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullCompass));
 						return;
-					}
-			int money = this.plugin.getConfig().getInt("Info.money");
+					}			int money = this.plugin.getConfig().getInt("Info.money");
 			int MaterialData = MaterialBusiness -= materialtake;
 			this.plugin.getConfig().set("Info.material", MaterialData);
 			int money10 = money += priceCompass;
@@ -436,22 +380,19 @@ private Map<Player, Inventory> holders = new HashMap<>();
             if(MaterialBusiness <= -1) {
             	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
             	return;
-            }
-			this.plugin.getConfig().set("Info.money", money10);
+            }			this.plugin.getConfig().set("Info.money", money10);
 			GLClass.getInsance().saveConfig();
-            updateScoreboard(player2);
+            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
             List<String> list = GLClass.getLog().getStringList("logs");
             list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy compass " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
             GLClass.saveLog();
 		    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyCompass)); player.getInventory().addItem(new ItemStack(Material.COMPASS, NumberCompassGive));
-			}
-				if(e.getSlot() == 8) {
+			}	if(e.getSlot() == 8) {
 					if(!EconomyManager.takeMoney(player, priceFire)) {
 						player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + TakeMoneyNullFire));
 						return;
-					}
-					int MaterialData = MaterialBusiness -= materialtake;
+					} int MaterialData = MaterialBusiness -= materialtake;
 			int money = this.plugin.getConfig().getInt("Info.money");
 			this.plugin.getConfig().set("Info.material", MaterialData);
 			int money11 = money += priceFire;
@@ -460,10 +401,9 @@ private Map<Player, Inventory> holders = new HashMap<>();
             if(MaterialBusiness <= -1) {
             	player.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + NullMaterial));
             	return;
-            }
-			this.plugin.getConfig().set("Info.money", money11);
+            }	this.plugin.getConfig().set("Info.money", money11);
 			GLClass.getInsance().saveConfig();
-            updateScoreboard(player2);
+            Methods.updateScoreboard(player2, LoreScoreBoard1, LoreScoreBoard2, plugin.getConfig().getInt("Info.money"), plugin.getConfig().getInt("Info.material"));
             List<String> list = GLClass.getLog().getStringList("logs");
             list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + e.getView().getPlayer().getName() + " buy flint and steel " + "total material: " + MaterialBusiness);
             GLClass.getLog().set("logs", list);
@@ -472,22 +412,5 @@ private Map<Player, Inventory> holders = new HashMap<>();
 				}
 		}
 	}
-	}
-	private void updateScoreboard(Player player) {
-		String LoreScoreBoard1 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard");
-		LoreScoreBoard1 = LoreScoreBoard1.replace("&", "\u00a7");
-		if(player == null) {
-			return;
-		}
-		Scoreboard s = player.getScoreboard();
-        Objective o = s.getObjective("stats"); {
-        	if(o == null) {
-        		return;
-        	}
-        o.getScore(LoreScoreBoard1).setScore(plugin.getConfig().getInt("Info.money"));
-			String LoreScoreBoard2 = plugin.getConfig().getString("ScoreBoard.LoreScoreBoard2");
-			LoreScoreBoard2 = LoreScoreBoard2.replace("&", "\u00a7");
-			o.getScore(LoreScoreBoard2).setScore(plugin.getConfig().getInt("Info.material"));
-        }
 	}
 }

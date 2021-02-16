@@ -2,9 +2,9 @@
 #spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/
 #check update, pls.
 Info:
-  money: 1570
-  owner: Boss90
-  material: 5805
+  money: 0
+  owner: 'Null'
+  material: 0
 GUI:
   NameGUI: '&aShop'
   NameApple: '&cApple'
@@ -109,10 +109,10 @@ MaterialGUI:
   NameGUI: '&aMaterial business'
   MaterialSlot3: 300
   SkullName3: '&aMaterial'
-  SkullLore3: '&7Materials: 300, price: 4.500'
+  SkullLore3: '&7Materials: 300, price: 4.500, you balance:'
   MaterialSlot7: 1500
   SkullName7: '&aMaterial'
-  SkullLore7: '&7Materials: 1.500, price: 22.500'
+  SkullLore7: '&7Materials: 1.500, price: 22.500, you balance:'
   SkullName5: '&aInfo.'
   SkullLore5: '&7Total material:&f'
   SkullLore5TwoLine: '&7Total balance:&f'
@@ -120,10 +120,10 @@ MaterialGUI:
   SkullLore5FourLine: '&7The money received today:&f'
   BalanceSlot2: 5000
   SkullName2: '&aBalance'
-  SkullLore2: '&7Pay balance business: 5.000'
+  SkullLore2: '&7Pay balance business: 5.000, you balance:'
   BalanceSlot8: 10000
   SkullName8: '&aBalance'
-  SkullLore8: '&7Pay balance business: 10.000'
+  SkullLore8: '&7Pay balance business: 10.000, you balance:'
   NullMaterial: '&cYou dont have enough money to buy the materials.'
   BuyMaterialMessage: '&aYou have successfully purchased the materials.'
   BuyBalanceMessage: '&aYou have replenished the balance of the business'

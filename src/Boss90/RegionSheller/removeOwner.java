@@ -1,9 +1,5 @@
 package Boss90.RegionSheller;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,10 +25,7 @@ public class removeOwner implements CommandExecutor, Listener {
 		 GLClass.getInsance().saveConfig();
 			String Prefix = plugin.getConfig().getString("Messages.Prefix");
 		 p.sendMessage(ChatColor.translateAlternateColorCodes('&',Prefix + " " + "You removed the business owner"));
-         List<String> list = GLClass.getLog().getStringList("logs");
-         list.add("[LOGS] [" + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "] [" + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":" + LocalTime.now().getSecond() + "] " + p.getName() + " removed owner");
-         GLClass.getLog().set("logs", list);
-         GLClass.saveLog();
+		 Methods.Log(p.getName(), " remove owner.");
    	 }
    	 return true;
 	}

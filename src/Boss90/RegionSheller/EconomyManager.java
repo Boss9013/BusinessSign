@@ -12,28 +12,19 @@ public class EconomyManager implements Listener{
 	public static void init() {
 		RegisteredServiceProvider<Economy> reg = Bukkit.getServicesManager().getRegistration(Economy.class);
 		if (reg != null) e = reg.getProvider();
-	}
-	
-	public static boolean takeMoney(Player p, double amount) {
+	}	public static boolean takeMoney(Player p, double amount) {
 		if(e == null) return false;
 		
 		if(e.getBalance(p) < amount) return false;
 		return e.withdrawPlayer(p, amount).transactionSuccess();
-		}
-	@SuppressWarnings("unused")
-	private static Economy e2;
-
-	public static void init1() {
+		}	public static void init1() {
 	RegisteredServiceProvider<Economy> reg = Bukkit.getServicesManager().getRegistration(Economy.class);
 	if (reg != null) e = reg.getProvider();
 
-	}
-
-	public static boolean giveMoney(Player p, double amount) {
+  }	public static boolean giveMoney(Player p, double amount) {
 	if (e == null) return false;
 	return e.depositPlayer(p, amount).transactionSuccess();
-	}
-	public static double infoMoney(Player p) {
+	}public static double infoMoney(Player p) {
 		return e.getBalance(p);
 	}
 }
