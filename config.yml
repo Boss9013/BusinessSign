@@ -21,6 +21,8 @@ GUI:
   LoreBook: '&cWritable Book&f: 100 money, you balance:'
   NameClock: '&eClock'
   LoreClock: '&eClock&f: 150 money, you balance:'
+  ClockDisplayName: '&eClock'
+  TitleClock: 'Time:'
   NameCompass: '&7Compass'
   LoreCompass: '&7Compass&f: 100 money, you balance:'
   NameSteel: '&4Flint and Steel'
@@ -141,10 +143,10 @@ Vote:
   BroadcastMessageStartVote: '&7<<&aBusiness&7>>: Voting has begun! Candidate: %arg1%,
     %arg2%, %arg3%.'
   BroadcastMessageStopVote: '&7<<&aBusiness&7>>: Voting stopped.'
-  start: 'false'
-  Nick1: ''
-  Nick2: ''
-  Nick3: ''
+  start: 'true'
+  Nick1: d
+  Nick2: d
+  Nick3: d
 Staff: '[]'
 #Пожалуйста, проверьте все наши обновление.
 #spigot: https://www.spigotmc.org/resources/businesssign-plugin-for-businesses-1-12-2.88056/

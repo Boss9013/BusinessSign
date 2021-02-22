@@ -9,6 +9,26 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import Boss90.RegionSheller.Commands.BalanceBusinessTake;
+import Boss90.RegionSheller.Commands.BalanceBusinesss;
+import Boss90.RegionSheller.Commands.HelpToPlugin;
+import Boss90.RegionSheller.Commands.ReloadPlugin;
+import Boss90.RegionSheller.Commands.RemoveStaff;
+import Boss90.RegionSheller.Commands.SetOwner;
+import Boss90.RegionSheller.Commands.Staff;
+import Boss90.RegionSheller.Commands.Vote;
+import Boss90.RegionSheller.Commands.VoteStart;
+import Boss90.RegionSheller.Commands.VoteStop;
+import Boss90.RegionSheller.Commands.removeOwner;
+import Boss90.RegionSheller.Commands.wipebusiness;
+import Boss90.RegionSheller.Events.Clock;
+import Boss90.RegionSheller.Events.Join;
+import Boss90.RegionSheller.Events.ScoreBoard;
+import Boss90.RegionSheller.Events.SingHandler;
+import Boss90.RegionSheller.Events.Taxes;
+import Boss90.RegionSheller.GUIMenu.ShopGUI;
+import Boss90.RegionSheller.GUIMenu.TakeMaterialBalance;
+import Boss90.RegionSheller.Util.EconomyManager;
 import net.milkbowl.vault.chat.Chat;
 
 public class GLClass extends JavaPlugin implements Listener{
@@ -71,6 +91,8 @@ public class GLClass extends JavaPlugin implements Listener{
 	Bukkit.getPluginManager().registerEvents(new Join(this), this);
 	Bukkit.getPluginManager().registerEvents(new ScoreBoard(this), this);
 	Bukkit.getPluginManager().registerEvents(new TakeMaterialBalance(this), this);
+	Bukkit.getPluginManager().registerEvents(new Clock(this), this);
+	Bukkit.getPluginManager().registerEvents(new Taxes(this), this);
 	if (Bukkit.getServer().getPluginManager().getPlugin("WorldGuard") == null ) {
 			this.getLogger().info("[ERROR] First install the WorldGuard plugin");
 	}
